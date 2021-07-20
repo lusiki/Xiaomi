@@ -1,0 +1,389 @@
+---
+title: "SHARE OF VOICE REPORT"
+author: "Croatian social media overview for July, 2021"
+date: "Contentio d.o.o"
+# subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
+subtitle: "Xiaomi"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts] 
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(knitr)
+opts_chunk$set(
+  fig.align="center", #fig.width=6, fig.height=4.5, 
+  # out.width="748px", #out.length="520.75px",
+  dpi=300, #fig.path='Figs/',
+  cache=F#, echo=F, warning=F, message=F
+  )
+```
+
+```{css, echo = F, eval = T}
+@media print {
+  .has-continuation {
+    display: block !important;
+  }
+}
+remark-slide-content {
+  font-size: 22px;
+  padding: 20px 80px 20px 80px;
+}
+.remark-code, .remark-inline-code {
+  background: #f0f0f0;
+}
+.remark-code {
+  font-size: 16px;
+}
+.mid. remark-code { /*Change made here*/
+  font-size: 60% !important;
+}
+.tiny .remark-code { /*Change made here*/
+  font-size: 40% !important;
+}
+```
+
+```{r paketi, warning=F, echo=F, message=F, eval=FALSE}
+
+library(FactoMineR)
+library(factoextra)
+library(FactoMineR)
+library(tidyverse)  # data manipulation and visualization
+library(gridExtra)  # plot arrangement
+library(patchwork)
+library(ggplot2)
+library(lavaan)
+library(sem)
+library(semPlot)
+library(tidyverse)
+library(dplyr)
+library(polycor)
+library(GPArotation)
+```
+
+# Contents
+
+<br>
+<br>
+<br>
+
+
+1. [General Overview](#gen)
+
+2. [Facebook](#fb)
+
+3. [Forums](#for)
+
+4. [Portals](#port)
+
+5. [Twitter](#tw)
+
+6. [Youtube](#yt)
+
+7. [Press](#pres)
+
+8. [TV](#tv)
+
+
+---
+class: inverse, center, middle
+name: gen
+
+# GENERAL OVERVIEW
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+(Trends)
+
+---
+
+# Frequency of mention
+<br>
+
+ 
+ 
+<br>
+<br>
+.footnote[[*]Number of mentions in the whole text corpora.]
+---
+
+# Frequency of publication
+<br>
+<br>
+
+
+
+.footnote[[*]Number of publications in the whole text corpora.]
+
+---
+
+# Media landscape frequency
+
+
+
+
+---
+
+class: inverse, center, middle
+name: fb
+
+# FACEBOOK
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+(Trends on the biggest Croatian social network)
+
+---
+
+
+# Most important publications
+<br>
+<br>
+
+
+- add size of the channels
+
+---
+
+# Most important authors
+<br>
+<br>
+
+
+---
+
+class: inverse, center, middle
+name: for
+
+# FORUMS
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+(Very important media for mobile phone market in Croatia)
+
+---
+
+
+# Most important forums
+<br>
+<br>
+
+
+- add size of the channels
+
+---
+
+# Activity description
+<br>
+<br>
+
+
+---
+
+# Most importan authors
+<br>
+<br>
+
+---
+
+class: inverse, center, middle
+name: port
+
+# PORTALS
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+(Usualy the original content to be shared across social media)
+
+---
+
+
+# Most important portals
+<br>
+<br>
+
+
+- add size of the channels
+
+---
+
+# Number of publications 
+<br>
+<br>
+
+
+---
+
+# Content analysis
+
+---
+
+class: inverse, center, middle
+name: tw
+
+# TWITTER
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+(Informed minority in Croatia)
+
+---
+
+
+# Most important authors
+<br>
+<br>
+
+
+- add size of the channels
+
+---
+
+# Authors by the audience size
+<br>
+<br>
+
+
+---
+# Number of publications
+<br>
+<br>
+
+
+---
+
+class: inverse, center, middle
+name: yt
+
+# YOUTUBE
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+(People that wants to know details)
+
+---
+
+# Videos by type
+<br>
+<br>
+
+
+---
+
+# Most important videos 
+<br>
+<br>
+
+- analyse impressons
+
+
+---
+
+# Most important authors
+<br>
+<br>
+
+
+
+---
+
+class: inverse, center, middle
+name: pres
+
+# PRESS
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+(Not very important)
+
+---
+
+
+# Most important sources
+<br>
+<br>
+
+
+---
+
+class: inverse, center, middle
+name: tv
+
+# TV
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+(Very rare)
+
+---
+
+
+# Most important sources
+<br>
+<br>
+
+---
+
+# CONTACT
+<br>
+<br>
+### Contentio d.o.o
+<br>
+Adress:
+<br>
+Phone:
+<br>
+Mail:
+<br>
+Web:
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<br>
+<br>
+
+
+
+
+
+
+
