@@ -50,23 +50,44 @@ remark-slide-content {
 }
 ```
 
-```{r paketi, warning=F, echo=F, message=F, eval=FALSE}
+```{r library, warning=F, echo=F, message=F, eval=FALSE}
 
-library(FactoMineR)
-library(factoextra)
-library(FactoMineR)
+
 library(tidyverse)  # data manipulation and visualization
 library(gridExtra)  # plot arrangement
 library(patchwork)
 library(ggplot2)
-library(lavaan)
-library(sem)
-library(semPlot)
 library(tidyverse)
 library(dplyr)
-library(polycor)
-library(GPArotation)
+library(tidyr)
+library(janitor)
+
 ```
+
+
+```{r data}
+
+xiaomiD <- read.csv2("../Dta/09.07-16.07allcsv.csv") %>%
+  select(X.3) %>%
+  row_to_names(.,1) %>%
+  mutate(Published = substr(Published,1,10)) #%>%
+#mutate(Datum = as.Date(Published,"d%.m%.Y%"))
+
+Datum  <- mutate(xiaomiD, b2= as.Date(Published, format= "%d.%m.%Y")) %>%
+  select(-Published) %>%
+  rename(Datum =b2)
+
+
+xiaomi <- readxl::read_excel("../Dta/09.07-16.07all.xlsx") %>% 
+  row_to_names(.,1) %>% 
+  clean_names() %>%
+#  select(-c(1,17:25,28:33,37:41)) %>%
+  select(-published,-indexed,-category,-image,-languages) %>%
+  cbind.data.frame(Datum)
+
+```
+
+
 
 # Contents
 
