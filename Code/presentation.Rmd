@@ -248,7 +248,7 @@ name: gen
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Trends)
+(Trends in the complete social media space)
 
 ---
 
@@ -326,9 +326,36 @@ allWords %>%
 
 ---
 
+# Most important words over time
+
+
+
+---
+
 # Media landscape frequency
 
 
+```{r landscapeFreq, echo=FALSE, message=FALSE, warning=FALSE}
+
+xiaomi %>% 
+  group_by(source) %>%
+  summarise(n = n_distinct(id)) %>%
+  arrange(desc(n)) -> landscapeFreq
+  
+
+landscapeFreq %>%
+  rename (Source = source,
+          'Number of publications' = n) %>%
+  kable() %>%
+  kable_styling() %>%
+  scroll_box(width = "500px", height = "400px")
+
+```
+
+
+---
+
+# Media landscape frequency
 
 
 ---
