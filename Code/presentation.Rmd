@@ -427,8 +427,6 @@ landscapeFreqBrand %>%
 
 ```
 
-
-
 ---
 
 class: inverse, center, middle
