@@ -345,6 +345,29 @@ allWords %>%
 
 # Most important words over time
 
+```{r brandOverTime
+, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3, fig.width = 5}
+
+brands <- c("xiaomi", "samsung", "huawei", "vivo")
+
+rijeci_clean %>%
+# mutate(Datum = floor_date(Datum, "quarter")) %>% 
+  group_by(Datum) %>%
+  count(word) %>% 
+  mutate(gn = sum(n)) %>% 
+  filter(word %in% brands) %>%
+  ggplot(., aes(Datum, n / gn)) + 
+  geom_line() +
+  ggtitle("Brand mentions over time") +
+  ylab("Percentage of words in the corpus") +
+  xlab("Date") +
+  facet_wrap(~ word, scales = "free_y") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+  panel.background = element_blank(), axis.line = element_line(colour = "black"))
+
+
+```
 
 
 ---
@@ -376,7 +399,7 @@ landscapeFreq %>%
 
 # Media landscape frequency by brand
 
-```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 4, fig.width = 5}
+```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3, fig.width = 5}
 
 rijeci_clean %>%
   filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
