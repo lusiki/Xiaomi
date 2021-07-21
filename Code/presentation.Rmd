@@ -63,11 +63,13 @@ library(tidyr)
 library(janitor)
 library(httr)
 library(tidytext)
+library(kableExtra)
+library(data.table)
 
 
 ```
 
-```{r data, warning=F, echo=F, message=F, eval=TRUE}
+```{r importDta, warning=F, echo=F, message=F, eval=TRUE}
 
 xiaomiD <- read.csv2("../Dta/09.07-16.07allcsv.csv") %>%
   select(X.3) %>%
@@ -203,7 +205,6 @@ stop_corpus <- my_stop_words %>%
 
 ```{r tokenize, echo=FALSE, message=FALSE, warning=FALSE}
 
-
 xiaomi %>%
   unnest_tokens(word, text) %>%
   anti_join(stop_corpus, by = "word") %>%
@@ -211,22 +212,7 @@ xiaomi %>%
   mutate(word = gsub("^[a-zA-Z]$", NA, word)) %>%
   filter(!is.na(word)) -> rijeci_clean
 
-
-rijeci_clean %>%
-  group_by(word) %>%
-  count() %>%
-  arrange(desc(n)) %>% 
-  ungroup() -> pregled
-
-
-pregled %>%
-#  slice(-c(1:5))%>%
-#  filter(n>50) %>%
-  kable() %>%
-    kable_styling() %>%
-    scroll_box(width = "500px", height = "400px")
 ```
-
 
 
 
@@ -269,6 +255,23 @@ name: gen
 # Frequency of mention
 <br>
 
+```{r freqOFmention, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+rijeci_clean %>%
+  filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
+  group_by(word) %>%
+  count() %>%
+  arrange(desc(n))-> freqOFmention
+
+freqOFmention %>%
+  rename (Word = word,
+          'Number of mentions' = n) %>%
+  kable() %>%
+    kable_styling()
+  
+
+```
  
  
 <br>
@@ -280,9 +283,46 @@ name: gen
 <br>
 <br>
 
+```{r freqOFpublication, echo=FALSE, message=FALSE, warning=FALSE}
+
+rijeci_clean %>%
+  filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
+  group_by(word) %>%
+  summarise(n = n_distinct(id)) %>%
+  arrange(desc(n)) -> freqOFpublication
 
 
-.footnote[[*]Number of publications in the whole text corpora.]
+freqOFpublication %>%
+  rename (Word = word,
+          'Number of publications' = n) %>%
+  kable() %>%
+    kable_styling()
+
+```
+
+
+.footnote[[*]Number of publications that mention the word in the whole text corpora.]
+
+---
+
+# Most important words
+
+```{r words, echo=FALSE, message=FALSE, warning=FALSE}
+
+rijeci_clean %>%
+  group_by(word) %>%
+  count() %>%
+  arrange(desc(n)) %>% 
+  ungroup() -> allWords
+
+
+allWords %>%
+  kable() %>%
+    kable_styling() %>%
+    scroll_box(width = "500px", height = "400px")
+```
+
+.footnote[[*]Words in the whole text corpora.]
 
 ---
 
