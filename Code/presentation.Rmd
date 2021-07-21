@@ -345,8 +345,7 @@ allWords %>%
 
 # Most important words over time
 
-```{r brandOverTime
-, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3, fig.width = 5}
+```{r brandOverTime, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3, fig.width = 5}
 
 brands <- c("xiaomi", "samsung", "huawei", "vivo")
 
@@ -399,7 +398,7 @@ landscapeFreq %>%
 
 # Media landscape frequency by brand
 
-```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3, fig.width = 5}
+```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE}
 
 rijeci_clean %>%
   filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
@@ -413,14 +412,17 @@ rijeci_clean %>%
 landscapeFreqBrand %>%
   ggplot(., aes(x = reorder(source,n), y = n)) +
   geom_bar(stat = "identity", alpha = 1) +
+  facet_wrap(~word, scales = "free") +
   ylab("Number of publications") +
   xlab("Source") +
-  ggtitle("Media landscape by brand")+
+  ggtitle("Media landscape by brand") +
 #  theme_bw() +
-  theme(axis.text.x=element_text(angle=60,hjust=1))+
-  facet_wrap(~word, scales = "free") +
-  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
-  panel.background = element_blank(), axis.line = element_line(colour = "black"))
+#  theme(axis.text.x=element_text(angle=45,hjust=1)) 
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        axis.text.x=element_text(angle=45,hjust=1))
 
 
 ```
