@@ -353,9 +353,38 @@ landscapeFreq %>%
 ```
 
 
+.footnote[[*]Publications by social media.]
+
 ---
 
-# Media landscape frequency
+# Media landscape frequency by brand
+
+```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 5, fig.width = 8}
+
+rijeci_clean %>%
+  filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
+  group_by(source, word) %>%
+  summarise(n = n_distinct(id)) %>%
+  arrange(desc(n)) %>%
+  filter(n > 2) -> landscapeFreqBrand
+  
+
+
+landscapeFreqBrand %>%
+  ggplot(., aes(x = source, y = n)) +
+  geom_bar(stat = "identity", alpha = 1) +
+  ylab("Number of publications") +
+  xlab("Source") +
+  ggtitle("Media landscape by brand")+
+#  theme_bw() +
+  theme(axis.text.x=element_text(angle=60,hjust=1))+
+  facet_wrap(~word, scales = "free") +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+  panel.background = element_blank(), axis.line = element_line(colour = "black"))
+
+
+```
+
 
 
 ---
