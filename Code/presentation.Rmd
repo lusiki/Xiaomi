@@ -493,9 +493,32 @@ facebook <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 <br>
 
 
-```{r}
+```{r generalStat,  echo=FALSE, message=FALSE, warning=FALSE}
+
+
+facebook %>%
+  mutate(impressions = as.numeric(impressions),
+         comments = as.numeric(comments),
+         engagements = as.numeric(engagements),
+         likes = as.numeric(likes)) %>%
+  rename(Activity = type) %>%
+  group_by(Activity) %>%
+  summarise(Publications = n(),
+            Impressions = sum(impressions, na.rm = TRUE),
+            Comments = sum(comments, na.rm = TRUE),
+            Engagements = sum(engagements, na.rm = TRUE),
+            Likes = sum(likes, na.rm = TRUE)) %>%
+  arrange(desc(Publications)) -> fbStat
+
+
+fbStat %>%
+  kable() %>%
+    kable_styling()
 
 ```
+
+.footnote[[*]Possibly interesting to see by brand.]
+
 
 
 - add size of the channels
