@@ -13,3 +13,8 @@ Monthly reports for Xiaomi in Croatian media:
 Weekly reports for Xiaomi in Croatian media:
 
 [19/07-23/07 July,2021](https://raw.githack.com/lusiki/Xiaomi/main/Code/weekly19-23.html)
+
+
+Weekly reports for Xiaomi in Slovenian media:
+
+[19/07-23/07 July,2021](https://raw.githack.com/lusiki/Xiaomi/main/Code/weekly19-23Slovenia.html)
