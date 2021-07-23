@@ -1,6 +1,6 @@
 ---
 title: "SHARE OF VOICE REPORT"
-author: "Slovenia media overview for 19/07-23/07 July,2021"
+author: "Slovenian media overview for 19/07-23/07 July, 2021"
 date: "Contentio d.o.o"
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
 subtitle: "Xiaomi"
