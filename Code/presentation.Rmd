@@ -500,7 +500,8 @@ facebook %>%
   mutate(impressions = as.numeric(impressions),
          comments = as.numeric(comments),
          engagements = as.numeric(engagements),
-         likes = as.numeric(likes)) %>%
+         likes = as.numeric(likes),
+         audience = as.numeric(audience)) %>%
   rename(Activity = type) -> fbDta
 
 fbDta %>%
@@ -528,7 +529,7 @@ fbStat %>%
 <br>
 <br>
 
-```{r}
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
 
 fbDta %>%
   top_n(.,10, wt = "impressions") %>% 
@@ -546,7 +547,7 @@ fbDta %>%
 <br>
 <br>
 
-```{r}
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
 
 fbDta %>%
   top_n(.,10, wt = "engagements") %>% 
@@ -565,7 +566,7 @@ fbDta %>%
 <br>
 
 
-```{r}
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
 
 fbDta %>%
   top_n(.,10, wt = "likes") %>% 
@@ -577,15 +578,81 @@ fbDta %>%
 
 ```
 
+---
 
-- add size of the channels
+# Most important authors (by impressions)
+<br>
+<br>
+
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
+
+fbDta %>%
+  group_by(author) %>%
+  top_n(.,5, wt = "impressions") %>% 
+  arrange(desc(impressions)) %>%
+  select(text, Activity, author, url, impressions, engagements, likes, Date) %>%
+  kable() %>%
+    kable_styling() %>%
+    scroll_box(width = "900px", height = "400px")
+```
 
 ---
 
-# Most important authors
+# Most important authors (by engagements)
 <br>
 <br>
 
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
+
+fbDta %>%
+  group_by(author) %>%
+  top_n(.,5, wt = "engagements") %>% 
+  arrange(desc(engagements)) %>%
+  select(text, Activity, author, url, impressions, engagements, likes, Date) %>%
+  kable() %>%
+    kable_styling() %>%
+    scroll_box(width = "900px", height = "400px")
+```
+
+
+---
+
+# Most important authors (by likes)
+<br>
+<br>
+
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
+
+fbDta %>%
+  group_by(author) %>%
+  top_n(.,5, wt = "likes") %>% 
+  arrange(desc(likes)) %>%
+  select(text, Activity, author , url, impressions, engagements, likes, Date) %>%
+  kable() %>%
+    kable_styling() %>%
+    scroll_box(width = "900px", height = "400px")
+```
+
+
+---
+
+# Most important authors (by audience)
+<br>
+<br>
+
+
+
+```{r,  echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+
+fbDta %>%
+  group_by(author) %>%
+  #top_n(.,5, wt = "audience") %>% 
+  arrange(desc(audience)) %>%
+  select( author , audience, impressions, engagements, likes, Date) %>%
+  kable() %>%
+    kable_styling() %>%
+    scroll_box(width = "900px", height = "400px")
+```
 
 ---
 
