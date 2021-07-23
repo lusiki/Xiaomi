@@ -488,7 +488,7 @@ facebook <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 ```
 
 
-# Most important publications
+# General overview
 <br>
 <br>
 
@@ -501,7 +501,9 @@ facebook %>%
          comments = as.numeric(comments),
          engagements = as.numeric(engagements),
          likes = as.numeric(likes)) %>%
-  rename(Activity = type) %>%
+  rename(Activity = type) -> fbDta
+
+fbDta %>%
   group_by(Activity) %>%
   summarise(Publications = n(),
             Impressions = sum(impressions, na.rm = TRUE),
@@ -519,6 +521,61 @@ fbStat %>%
 
 .footnote[[*]Possibly interesting to see by brand.]
 
+
+---
+
+# Most important activity by impressions
+<br>
+<br>
+
+```{r}
+
+fbDta %>%
+  top_n(.,10, wt = "impressions") %>% 
+  arrange(desc(impressions)) %>%
+  select(text, Activity, url, impressions, engagements, likes, Date) %>%
+  kable() %>%
+    kable_styling() %>%
+    scroll_box(width = "900px", height = "400px")
+
+```
+
+---
+
+# Most important activity by engagement
+<br>
+<br>
+
+```{r}
+
+fbDta %>%
+  top_n(.,10, wt = "engagements") %>% 
+  arrange(desc(engagements)) %>%
+  select(text, Activity, url, impressions, engagements, likes, Date) %>%
+  kable() %>%
+    kable_styling() %>%
+    scroll_box(width = "900px", height = "400px")
+
+```
+
+---
+
+# Most important activity by likes
+<br>
+<br>
+
+
+```{r}
+
+fbDta %>%
+  top_n(.,10, wt = "likes") %>% 
+  arrange(desc(likes)) %>%
+  select(text, Activity, url, impressions, engagements, likes, Date) %>%
+  kable() %>%
+    kable_styling() %>%
+    scroll_box(width = "900px", height = "400px")
+
+```
 
 
 - add size of the channels
