@@ -1,6 +1,6 @@
 ---
 title: "SHARE OF VOICE REPORT"
-author: "Croatian social media overview for 19/07-23/07 July,2021"
+author: "Croatian media overview for 19/07-23/07 July,2021"
 date: "Contentio d.o.o"
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
 subtitle: "Xiaomi"
@@ -414,7 +414,7 @@ name: mediaLandscape
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Media coverage per social media)
+(Media coverage per media outlet)
 
 ---
 
@@ -439,7 +439,7 @@ landscapeFreq %>%
 ```
 
 
-.footnote[[*]Publications by social media.]
+.footnote[[*]Publications by media outlet.]
 
 ---
 
@@ -482,7 +482,7 @@ landscapeFreqBrand %>%
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
         axis.line = element_line(colour = "black"),
-        axis.text.x=element_text(angle=45,hjust=1))
+        axis.text.x=element_text(angle=90,hjust=1))
 
 
 ```
@@ -497,13 +497,13 @@ landscapeFreqBrand %>%
 <br>
 ### Contentio d.o.o
 <br>
-Adress:
+Adress: Kralja Stjepana Tomaševića 7 , 10410, Velika Gorica
 <br>
-Phone:
+Phone: + 385 98 162 30 52
 <br>
-Mail:
+Mail: luka.sikic.gm@gmail.com
 <br>
-Web:
+Web: http://www.contentio.biz/contact/
 
 
 
