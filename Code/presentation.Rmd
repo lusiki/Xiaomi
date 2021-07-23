@@ -83,6 +83,7 @@ library(tidytext)
 library(kableExtra)
 library(data.table)
 library(scales)
+library(readxl)
 
 
 ```
@@ -448,10 +449,53 @@ name: fb
 
 ---
 
+```{r importFacebook, echo=FALSE, message=FALSE, warning=FALSE}
+
+site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+                               sheet = "Facebook")
+
+site_data_column_names <- colnames(site_data_columns)
+column_data_types <- c()
+for(i in 1 : length(site_data_column_names)){  
+
+    #where date is a column name
+    if(site_data_column_names[i] == "date"){
+         column_data_types[i] <- "date"
+
+         #where result is a column name
+         } else if (site_data_column_names[i] == "result") {
+                      column_data_types[i] <- "numeric"
+
+         } else{
+                column_data_types[i] <- "text"
+        }
+}
+column_data_types[5] <- "date"
+
+
+
+facebook <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+                               sheet = "Facebook",
+                               col_types = column_data_types) %>% 
+  row_to_names(.,1) %>% 
+  clean_names() %>%
+#  select(-c(1,17:25,28:33,37:41)) %>%
+  select(-indexed,-category,-image,-languages) %>%
+  rename(Date = na)
+
+
+
+```
+
 
 # Most important publications
 <br>
 <br>
+
+
+```{r}
+
+```
 
 
 - add size of the channels

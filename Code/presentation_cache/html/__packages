@@ -17,3 +17,4 @@ tidytext
 kableExtra
 data.table
 scales
+readxl
