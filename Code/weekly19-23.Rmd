@@ -1,6 +1,6 @@
 ---
 title: "SHARE OF VOICE REPORT"
-author: "Croatian social media overview for July, 2021"
+author: "Croatian social media overview for 19/07-23/07 July,2021"
 date: "Contentio d.o.o"
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
 subtitle: "Xiaomi"
@@ -241,9 +241,9 @@ xiaomi %>%
 <br>
 
 
-1. [Frequency of mention](#gen)
+1. [Frequency of mention](#men)
 
-2. [Frequency of publication](#fb)
+2. [Frequency of publication](#fp)
 
 3. [Most important words](#word)
 
@@ -251,20 +251,20 @@ xiaomi %>%
 
 5. [Media landscape frequency](#mediaLandscape)
 
-6. [# Media landscape frequency by brand](#mediaLandscapeBrand)
+6. [Media landscape frequency by brand](#mediaLandscapeBrand)
 
 
 ---
 
 
 class: inverse, center, middle
-name: gen
+name: men
 
 # FREQUENCY OF MENTION
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Trends in the complete social media space)
+(Number of overall mentions in media)
 
 ---
 
@@ -275,7 +275,7 @@ name: gen
 
 
 rijeci_clean %>%
-  filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
+  filter(word %in% c("xiaomi","samsung","huawei")) %>%
   group_by(word) %>%
   count() %>%
   arrange(desc(n))-> freqOFmention
@@ -298,13 +298,13 @@ freqOFmention %>%
 
 
 class: inverse, center, middle
-name: gen
+name: fp
 
 # FREQUENCY OF PUBLICATION
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Trends in the complete social media space)
+(Number of mentions per media outlet)
 
 ---
 
@@ -315,7 +315,7 @@ name: gen
 ```{r freqOFpublication, echo=FALSE, message=FALSE, warning=FALSE}
 
 rijeci_clean %>%
-  filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
+  filter(word %in% c("xiaomi","samsung","huawei")) %>%
   group_by(word) %>%
   summarise(n = n_distinct(id)) %>%
   arrange(desc(n)) -> freqOFpublication
@@ -335,13 +335,13 @@ freqOFpublication %>%
 ---
 
 class: inverse, center, middle
-name: gen
+name: word
 
 # MOST IMPORTANT WORDS
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Trends in the complete social media space)
+(Words that are used most often)
 
 ---
 
@@ -369,13 +369,13 @@ allWords %>%
 ---
 
 class: inverse, center, middle
-name: gen
+name: wordtime
 
 # MOST IMPORTANT WORDS OVER TIME
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Trends in the complete social media space)
+(Mentions of the brand over time)
 
 ---
 
@@ -383,7 +383,7 @@ name: gen
 
 ```{r brandOverTime, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3, fig.width = 5}
 
-brands <- c("xiaomi", "samsung", "huawei", "vivo")
+brands <- c("xiaomi", "samsung", "huawei")
 
 rijeci_clean %>%
 # mutate(Datum = floor_date(Datum, "quarter")) %>% 
@@ -408,13 +408,13 @@ rijeci_clean %>%
 ---
 
 class: inverse, center, middle
-name: gen
+name: mediaLandscape
 
 # MEDIA LANDSCAPE FREQUENCY
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Trends in the complete social media space)
+(Media coverage per social media)
 
 ---
 
@@ -445,13 +445,13 @@ landscapeFreq %>%
 
 
 class: inverse, center, middle
-name: gen
+name: mediaLandscapeBrand
 
 # MEDIA LANDSCAPE FREQENCY BY BRAND
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Trends in the complete social media space)
+(Media landscape overview)
 
 ---
 
@@ -461,7 +461,7 @@ name: gen
 ```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 4}
 
 rijeci_clean %>%
-  filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
+  filter(word %in% c("xiaomi","samsung","huawei")) %>%
   group_by(source, word) %>%
   summarise(n = n_distinct(id)) %>%
   arrange(desc(n)) %>%
@@ -473,7 +473,7 @@ landscapeFreqBrand %>%
   ggplot(., aes(x = reorder(source,n), y = n)) +
   geom_bar(stat = "identity", alpha = 1) +
   facet_wrap(~word, scales = "free") +
-  ylab("Number of publications") +
+  ylab("") +
   xlab("Source") +
   ggtitle("Media landscape by brand") +
 #  theme_bw() +
