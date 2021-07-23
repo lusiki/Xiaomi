@@ -16,3 +16,4 @@ httr
 tidytext
 kableExtra
 data.table
+scales

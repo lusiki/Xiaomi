@@ -82,13 +82,14 @@ library(httr)
 library(tidytext)
 library(kableExtra)
 library(data.table)
+library(scales)
 
 
 ```
 
 ```{r importDta, warning=F, echo=F, message=F, eval=TRUE}
 
-xiaomiD <- read.csv2("../Dta/09.07-16.07allcsv.csv") %>%
+xiaomiD <- read.csv2("../Dta/Xiaomi full.csv") %>%
   select(X.3) %>%
   row_to_names(.,1) %>%
   mutate(Published = substr(Published,1,10)) #%>%
@@ -99,7 +100,7 @@ Datum  <- mutate(xiaomiD, b2= as.Date(Published, format= "%d.%m.%Y")) %>%
   rename(Datum =b2)
 
 
-xiaomi <- readxl::read_excel("../Dta/09.07-16.07all.xlsx") %>% 
+xiaomi <- readxl::read_excel("../Dta/Xiaomi full.xlsx") %>% 
   row_to_names(.,1) %>% 
   clean_names() %>%
 #  select(-c(1,17:25,28:33,37:41)) %>%
@@ -318,7 +319,7 @@ freqOFpublication %>%
 ```
 
 
-.footnote[[*]Number of publications that mention the word in the whole text corpora.]
+.footnote[[*]Number of distinct publications that mention the word in the whole text corpora.]
 
 ---
 
@@ -350,23 +351,27 @@ allWords %>%
 brands <- c("xiaomi", "samsung", "huawei", "vivo")
 
 rijeci_clean %>%
-# mutate(Datum = floor_date(Datum, "quarter")) %>% 
+#  mutate(Datum = lubridate::floor_date(Datum, "week")) %>% 
   group_by(Datum) %>%
   count(word) %>% 
   mutate(gn = sum(n)) %>% 
   filter(word %in% brands) %>%
   ggplot(., aes(Datum, n / gn)) + 
-  geom_line() +
+#  geom_bar(stat = "identity") +
+  geom_line() + 
   ggtitle("Brand mentions over time") +
   ylab("Percentage of words in the corpus") +
   xlab("Date") +
   facet_wrap(~ word, scales = "free_y") +
   scale_y_continuous(labels = scales::percent_format()) +
+  scale_x_date(labels = date_format("%d-%m")) +
   theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
   panel.background = element_blank(), axis.line = element_line(colour = "black"))
 
 
 ```
+
+.footnote[[*]Percentage (%) of word in the text corpora on a given day.]
 
 
 ---
@@ -398,7 +403,7 @@ landscapeFreq %>%
 
 # Media landscape frequency by brand
 
-```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 4}
+```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 4, fig.width=10}
 
 rijeci_clean %>%
   filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
@@ -422,10 +427,13 @@ landscapeFreqBrand %>%
         panel.grid.minor = element_blank(),
         panel.background = element_blank(),
         axis.line = element_line(colour = "black"),
-        axis.text.x=element_text(angle=45,hjust=1))
+        axis.text.x=element_text(angle=35,hjust=1))
 
 
 ```
+
+
+.footnote[[*]Publications by social media.]
 
 ---
 
