@@ -921,23 +921,107 @@ name: tw
 
 ---
 
+```{r importTwitter, echo=FALSE, message=FALSE, warning=FALSE}
+
+site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+                               sheet = "Twitter")
+
+site_data_column_names <- colnames(site_data_columns)
+column_data_types <- c()
+for(i in 1 : length(site_data_column_names)){  
+
+    #where date is a column name
+    if(site_data_column_names[i] == "date"){
+         column_data_types[i] <- "date"
+
+         #where result is a column name
+         } else if (site_data_column_names[i] == "result") {
+                      column_data_types[i] <- "numeric"
+
+         } else{
+                column_data_types[i] <- "text"
+        }
+}
+column_data_types[5] <- "date"
+column_data_types[10] <- "guess"
+
+
+
+twitter <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+                               sheet = "Twitter",
+                               col_types = column_data_types) %>% 
+  row_to_names(.,1) %>% 
+  clean_names() %>%
+  select(title,text,"Date" = na,source,url, type, impressions, engagements, author) %>%
+  mutate(impressions = as.numeric(impressions)) %>%
+  mutate(engagements = as.numeric(engagements))
+
+
+```
+
+
+# Summary of activity
+<br>
+<br>
+
+
+```{r , echo=FALSE, message=FALSE, warning=FALSE}
+
+twitter %>% 
+  group_by(type) %>%
+  count() %>%
+  arrange(desc(n)) %>% 
+  kable() %>%
+    kable_styling() #%>%
+#     scroll_box(width = "700px", height = "400px")
+
+```
+
+---
 
 # Most important authors
 <br>
 <br>
 
+```{r}
 
-- add size of the channels
+
+twitter %>%
+  group_by(author) %>%
+  count() %>%
+  arrange(desc(n)) %>% 
+  kable() %>%
+    kable_styling()
+
+
+```
+
+
+
+
+---
+
+# Most important tweets (by impressions)
+<br>
+<br>
+
+
+
+```{r}
+
+twitter %>%
+  group_by(text, author) %>%
+  summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
+  arrange(desc(Impressions))
+
+
+
+```
+
 
 ---
 
 # Authors by the audience size
-<br>
-<br>
-
-
----
-# Number of publications
 <br>
 <br>
 
