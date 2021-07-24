@@ -991,7 +991,8 @@ twitter %>%
   count() %>%
   arrange(desc(n)) %>% 
   kable() %>%
-    kable_styling()
+    kable_styling() #%>%
+#     scroll_box(width = "700px", height = "400px")
 
 
 ```
@@ -1012,7 +1013,10 @@ twitter %>%
 twitter %>%
   group_by(text, author) %>%
   summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
-  arrange(desc(Impressions))
+  arrange(desc(Impressions)) %>% 
+  kable() %>%
+    kable_styling() %>%
+     scroll_box(width = "700px", height = "400px")
 
 
 
