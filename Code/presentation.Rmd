@@ -952,9 +952,10 @@ twitter <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
                                col_types = column_data_types) %>% 
   row_to_names(.,1) %>% 
   clean_names() %>%
-  select(title,text,"Date" = na,source,url, type, impressions, engagements, author) %>%
+  select(title,text,"Date" = na,source,url, type, impressions, engagements, author, audience, profile) %>%
   mutate(impressions = as.numeric(impressions)) %>%
-  mutate(engagements = as.numeric(engagements))
+  mutate(engagements = as.numeric(engagements)) %>%
+  mutate(audience = as.numeric(audience))
 
 
 ```
@@ -983,7 +984,7 @@ twitter %>%
 <br>
 <br>
 
-```{r}
+```{r , echo=FALSE, message=FALSE, warning=FALSE}
 
 
 twitter %>%
@@ -1008,7 +1009,7 @@ twitter %>%
 
 
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
 twitter %>%
   group_by(text, author) %>%
@@ -1028,6 +1029,24 @@ twitter %>%
 # Authors by the audience size
 <br>
 <br>
+
+
+
+```{r}
+
+twitter %>%
+  group_by(author) %>%
+  arrange(desc(audience)) %>%
+  select(author,audience,profile) %>% 
+  distinct(author, .keep_all = TRUE) %>% 
+  kable() %>%
+    kable_styling() %>%
+     scroll_box(width = "700px", height = "400px")
+
+
+
+```
+
 
 
 ---
