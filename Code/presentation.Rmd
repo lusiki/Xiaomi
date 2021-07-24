@@ -673,25 +673,120 @@ name: for
 ---
 
 
-# Most important forums
+```{r importForums, echo=FALSE, message=FALSE, warning=FALSE}
+
+site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+                               sheet = "Forums")
+
+site_data_column_names <- colnames(site_data_columns)
+column_data_types <- c()
+for(i in 1 : length(site_data_column_names)){  
+
+    #where date is a column name
+    if(site_data_column_names[i] == "date"){
+         column_data_types[i] <- "date"
+
+         #where result is a column name
+         } else if (site_data_column_names[i] == "result") {
+                      column_data_types[i] <- "numeric"
+
+         } else{
+                column_data_types[i] <- "text"
+        }
+}
+column_data_types[5] <- "date"
+column_data_types[10] <- "guess"
+
+
+
+forums <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+                               sheet = "Forums",
+                               col_types = column_data_types) %>% 
+  row_to_names(.,1) %>% 
+  clean_names() %>%
+  select(title,text,"Date" = na,source,url, type, impressions, engagements, author) %>%
+  mutate(impressions = as.numeric(impressions)) %>%
+  mutate(engagements = as.numeric(engagements))
+
+
+```
+
+# Most important forums by activity
 <br>
 <br>
 
+```{r , echo=FALSE, message=FALSE, warning=FALSE}
+
+forums %>%
+  group_by(source) %>%
+  count() %>%
+  arrange(desc(n)) %>% 
+  kable() %>%
+    kable_styling() #%>%
+ #   scroll_box(width = "900px", height = "400px")
+
+```
 
 - add size of the channels
 
 ---
 
-# Activity description
+# Most important forums by impressions
 <br>
 <br>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+forums %>%
+  group_by(source) %>%
+  summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
+  arrange(desc(Impressions)) %>% 
+  kable() %>%
+    kable_styling()
+  
+  
+```
+
+---
+
+# Most important forums by engagements
+<br>
+<br>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+forums %>%
+  group_by(source) %>%
+  summarise(Engagements = sum(engagements, na.rm = TRUE)) %>%
+  arrange(desc(Engagements)) %>% 
+  kable() %>%
+    kable_styling()
+  
+  
+```
 
 
 ---
 
-# Most importan authors
+# Most important authors
 <br>
 <br>
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+forums %>%
+  group_by(author, source) %>%
+  summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
+  arrange(desc(Impressions)) %>% 
+  kable() %>%
+    kable_styling()
+  
+  
+```
+
+
+
 
 ---
 
