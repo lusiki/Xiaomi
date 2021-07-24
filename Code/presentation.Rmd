@@ -892,7 +892,7 @@ portals %>%
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
 portals %>%
-  group_by(title, text, source, Date) %>%
+  group_by(title, url, source, Date) %>%
   summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
   arrange(desc(Impressions)) %>%
   kable() %>%
