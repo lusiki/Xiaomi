@@ -780,7 +780,8 @@ forums %>%
   summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
   arrange(desc(Impressions)) %>% 
   kable() %>%
-    kable_styling()
+    kable_styling() %>%
+     scroll_box(width = "700px", height = "400px")
   
   
 ```
@@ -901,6 +902,9 @@ portals %>%
 
 
 ```
+
+---
+
 
 # Content analysis
 
