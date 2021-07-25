@@ -256,7 +256,7 @@ xiaomi %>%
 
 7. [Press](#pres)
 
-8. [TV](#tv)
+8. [Instagram](#insta)
 
 
 ---
@@ -1269,7 +1269,7 @@ press %>%
 ---
 
 class: inverse, center, middle
-name: tv
+name: insta
 
 # Instagram
 
@@ -1279,10 +1279,87 @@ name: tv
 
 ---
 
+```{r importInsta, echo=FALSE, message=FALSE, warning=FALSE}
 
-# Most important sources
+site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+                               sheet = "Instagram")
+
+site_data_column_names <- colnames(site_data_columns)
+column_data_types <- c()
+for(i in 1 : length(site_data_column_names)){  
+
+    #where date is a column name
+    if(site_data_column_names[i] == "date"){
+         column_data_types[i] <- "date"
+
+         #where result is a column name
+         } else if (site_data_column_names[i] == "result") {
+                      column_data_types[i] <- "numeric"
+
+         } else{
+                column_data_types[i] <- "text"
+        }
+}
+column_data_types[5] <- "date"
+column_data_types[10] <- "guess"
+
+
+
+insta <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+                               sheet = "Instagram",
+                               col_types = column_data_types) %>% 
+  row_to_names(.,1) %>% 
+  clean_names() %>%
+  select(title,text,"Date" = na,source,url, type, impressions, engagements, author,views, likes_3, comments) %>%
+  mutate(impressions = as.numeric(impressions)) %>%
+  mutate(engagements = as.numeric(engagements)) %>%
+  mutate(views = as.numeric(views)) %>%
+  mutate(likes = as.numeric(likes_3)) %>%
+  mutate(comments = as.numeric(comments))
+
+
+```
+
+
+# Most important posts (by impressions)
 <br>
 <br>
+
+
+```{r , echo=FALSE, message=FALSE, warning=FALSE}
+
+insta %>%
+  group_by(url,text) %>%
+  summarise(Impressions = sum(impressions,na.rm = TRUE)) %>%
+  arrange(desc(Impressions)) %>%
+  select(url, Impressions, text) %>%
+  kable() %>%
+    kable_styling() %>%
+     scroll_box(width = "700px", height = "400px")
+
+
+```
+
+---
+
+# Most important posts (by likes)
+<br>
+<br>
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+insta %>%
+  group_by(url,text) %>%
+  summarise(Likes = sum(likes,na.rm = TRUE)) %>%
+  arrange(desc(Likes)) %>%
+  select(url, Likes, text) %>%
+  kable() %>%
+    kable_styling() %>%
+     scroll_box(width = "700px", height = "400px")
+
+
+```
+
 
 ---
 
@@ -1290,14 +1367,14 @@ name: tv
 <br>
 <br>
 ### Contentio d.o.o
+br>
+Adress: Kralja Stjepana Tomaševića 7 , 10410, Velika Gorica
 <br>
-Adress:
+Phone: + 385 98 162 30 52
 <br>
-Phone:
+Mail: luka.sikic.gm@gmail.com
 <br>
-Mail:
-<br>
-Web:
+Web: http://www.contentio.biz/contact/
 
 
 
