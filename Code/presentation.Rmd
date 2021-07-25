@@ -1032,7 +1032,7 @@ twitter %>%
 
 
 
-```{r}
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
 twitter %>%
   group_by(author) %>%
@@ -1058,13 +1058,85 @@ name: yt
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(People that wants to know details)
+(Social media with highest attention focus)
 
 ---
+
+
+```{r importYT, echo=FALSE, message=FALSE, warning=FALSE}
+
+site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+                               sheet = "YouTube")
+
+site_data_column_names <- colnames(site_data_columns)
+column_data_types <- c()
+for(i in 1 : length(site_data_column_names)){  
+
+    #where date is a column name
+    if(site_data_column_names[i] == "date"){
+         column_data_types[i] <- "date"
+
+         #where result is a column name
+         } else if (site_data_column_names[i] == "result") {
+                      column_data_types[i] <- "numeric"
+
+         } else{
+                column_data_types[i] <- "text"
+        }
+}
+column_data_types[5] <- "date"
+column_data_types[10] <- "guess"
+
+
+
+yt <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+                               sheet = "YouTube",
+                               col_types = column_data_types) %>% 
+  row_to_names(.,1) %>% 
+  clean_names() %>%
+  select(title,text,"Date" = na,source,url, type, impressions, engagements, author) %>%
+  mutate(impressions = as.numeric(impressions)) %>%
+  mutate(engagements = as.numeric(engagements))
+
+
+```
+
 
 # Videos by type
 <br>
 <br>
+
+
+
+```{r}
+
+yt %>%
+  group_by(type) %>%
+  count()
+
+```
+
+
+---
+
+# Most important channels
+<br>
+<br>
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+yt %>%
+  group_by(author) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  filter(n > 2) %>%
+  kable() %>%
+    kable_styling() %>%
+     scroll_box(width = "600px", height = "400px")
+
+
+```
 
 
 ---
@@ -1073,7 +1145,18 @@ name: yt
 <br>
 <br>
 
-- analyse impressons
+```{r}
+yt %>%
+  group_by(title,url, author) %>%
+  summarise(Impressions = sum(impressions,na.rm = TRUE),
+            Comments = sum(comments, na.rm = TRUE),
+            Views = sum(views, na.rm = TRUE),
+            Likes = sum(likes,na.rm = TRUE)) %>%
+  arrange(desc(Impressions))
+
+
+```
+
 
 
 ---
@@ -1172,6 +1255,46 @@ Web:
 
 <br>
 <br>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
