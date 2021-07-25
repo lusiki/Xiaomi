@@ -267,9 +267,34 @@ name: gen
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Trends in the complete social media space)
+(Trends in the Croatian social media space for mobile brands)
 
 ---
+
+
+
+
+# Description
+
+## About
+<br>
+- This report covers complete Croatian social media space for July, 2021.
+<br>
+- Every mention of brands: xiaomi, samsung, huawei, vivo is included in the analysis.
+<br>
+- The GENERAL OVERVIEW part covers the full media space. The other parts cover individual social media.
+<br>
+## Findings
+<br>
+- Most social media activity is on forums and Facebook.
+<br>
+- Small number of newspaper (portal) articles are important and shared across different social media.
+<br>
+- Recommended influencers are on forums and facebook.
+
+
+---
+
 
 # Frequency of mention
 <br>
@@ -284,10 +309,13 @@ rijeci_clean %>%
   arrange(desc(n))-> freqOFmention
 
 freqOFmention %>%
-  rename (Word = word,
+  rename (Brand = word,
           'Number of mentions' = n) %>%
   kable() %>%
     kable_styling()
+
+#freqOFmention %>%
+#  ggplot(.,aes(word, n)) + geom_bar(stat= "identity")
   
 
 ```
@@ -295,7 +323,7 @@ freqOFmention %>%
  
 <br>
 <br>
-.footnote[[*]Number of mentions in the whole text corpora.]
+.footnote[[*]Number of brand mentions in the whole text corpora.]
 ---
 
 # Frequency of publication
@@ -312,7 +340,7 @@ rijeci_clean %>%
 
 
 freqOFpublication %>%
-  rename (Word = word,
+  rename (Brand = word,
           'Number of publications' = n) %>%
   kable() %>%
     kable_styling()
@@ -320,25 +348,26 @@ freqOFpublication %>%
 ```
 
 
-.footnote[[*]Number of distinct publications that mention the word in the whole text corpora.]
+.footnote[[*]Number of distinct publications that mention the brand.]
 
 ---
 
 # Most important words
-
+<br>
 ```{r words, echo=FALSE, message=FALSE, warning=FALSE}
 
 rijeci_clean %>%
   group_by(word) %>%
   count() %>%
   arrange(desc(n)) %>% 
-  ungroup() -> allWords
+  ungroup() %>%
+  rename("Word" = word, "No. of occurences" = n)-> allWords
 
 
 allWords %>%
   kable() %>%
     kable_styling() %>%
-    scroll_box(width = "500px", height = "400px")
+    scroll_box(width = "700px", height = "400px")
 ```
 
 .footnote[[*]Words in the whole text corpora.]
@@ -361,7 +390,7 @@ rijeci_clean %>%
 #  geom_bar(stat = "identity") +
   geom_line() + 
   ggtitle("Brand mentions over time") +
-  ylab("Percentage of words in the corpus") +
+  ylab("% in the corpus") +
   xlab("Date") +
   facet_wrap(~ word, scales = "free_y") +
   scale_y_continuous(labels = scales::percent_format()) +
@@ -372,13 +401,13 @@ rijeci_clean %>%
 
 ```
 
-.footnote[[*]Percentage (%) of word in the text corpora on a given day.]
+.footnote[[*]Percentage (%) of words (brands) in the full text corpora on a given day.]
 
 
 ---
 
 # Media landscape frequency
-
+<br>
 
 ```{r landscapeFreq, echo=FALSE, message=FALSE, warning=FALSE}
 
@@ -398,12 +427,13 @@ landscapeFreq %>%
 ```
 
 
-.footnote[[*]Publications by social media.]
+.footnote[[*]Uniqe publications that mention one or more brands per social media.]
 
 ---
 
 # Media landscape frequency by brand
-
+<br>
+<br>
 ```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 4, fig.width=10}
 
 rijeci_clean %>%
@@ -434,7 +464,7 @@ landscapeFreqBrand %>%
 ```
 
 
-.footnote[[*]Publications by social media.]
+.footnote[[*]Number of publications by the brand and social media.]
 
 ---
 
@@ -445,7 +475,7 @@ name: fb
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Trends on the biggest Croatian social network)
+(Lots of activity about mobile phones)
 
 ---
 
@@ -487,13 +517,13 @@ facebook <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 ```
 
 
-# General overview
+# Overview of FB activity
 <br>
 <br>
-
 
 ```{r generalStat,  echo=FALSE, message=FALSE, warning=FALSE}
 
+options(digits = 2, scipen = 999, big.mark = ".")
 
 facebook %>%
   mutate(impressions = as.numeric(impressions),
@@ -514,7 +544,7 @@ fbDta %>%
 
 
 fbStat %>%
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling()
 
 ```
@@ -524,7 +554,7 @@ fbStat %>%
 
 ---
 
-# Most important articles by impressions
+# Most important activity by impressions
 <br>
 <br>
 
@@ -534,15 +564,15 @@ fbDta %>%
   top_n(.,10, wt = "impressions") %>% 
   arrange(desc(impressions)) %>%
   select(text, Activity, url, impressions, engagements, likes, Date) %>%
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-    scroll_box(width = "900px", height = "400px")
+    scroll_box(width = "700px", height = "400px")
 
 ```
 
 ---
 
-# Most important articles by engagement
+# Most important activity by engagement
 <br>
 <br>
 
@@ -552,15 +582,15 @@ fbDta %>%
   top_n(.,10, wt = "engagements") %>% 
   arrange(desc(engagements)) %>%
   select(text, Activity, url, impressions, engagements, likes, Date) %>%
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-    scroll_box(width = "900px", height = "400px")
+    scroll_box(width = "700px", height = "400px")
 
 ```
 
 ---
 
-# Most important articles by likes
+# Most important activity by likes
 <br>
 <br>
 
@@ -571,15 +601,15 @@ fbDta %>%
   top_n(.,10, wt = "likes") %>% 
   arrange(desc(likes)) %>%
   select(text, Activity, url, impressions, engagements, likes, Date) %>%
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-    scroll_box(width = "900px", height = "400px")
+    scroll_box(width = "700px", height = "400px")
 
 ```
 
 ---
 
-# Most important authors (by impressions)
+# Most important authors (impressions)
 <br>
 <br>
 
@@ -589,15 +619,15 @@ fbDta %>%
   group_by(author) %>%
   top_n(.,5, wt = "impressions") %>% 
   arrange(desc(impressions)) %>%
-  select(text, Activity, author, url, impressions, engagements, likes, Date) %>%
-  kable() %>%
+  select(author, impressions, engagements, likes, text, Activity,  url, Date) %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-    scroll_box(width = "900px", height = "400px")
+    scroll_box(width = "700px", height = "400px")
 ```
 
 ---
 
-# Most important authors (by engagements)
+# Most important authors (engagement)
 <br>
 <br>
 
@@ -607,8 +637,8 @@ fbDta %>%
   group_by(author) %>%
   top_n(.,5, wt = "engagements") %>% 
   arrange(desc(engagements)) %>%
-  select(text, Activity, author, url, impressions, engagements, likes, Date) %>%
-  kable() %>%
+  select(author, engagements, impressions, likes, text, Activity,  url, Date) %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
     scroll_box(width = "900px", height = "400px")
 ```
@@ -616,7 +646,7 @@ fbDta %>%
 
 ---
 
-# Most important authors (by likes)
+# Most important authors (likes)
 <br>
 <br>
 
@@ -626,8 +656,8 @@ fbDta %>%
   group_by(author) %>%
   top_n(.,5, wt = "likes") %>% 
   arrange(desc(likes)) %>%
-  select(text, Activity, author , url, impressions, engagements, likes, Date) %>%
-  kable() %>%
+  select(author, likes, impressions, engagements, text, Activity,  url, Date) %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
     scroll_box(width = "900px", height = "400px")
 ```
@@ -635,12 +665,12 @@ fbDta %>%
 
 ---
 
-# Most important authors (by audience)
+# Most important authors (audience) 
 <br>
 <br>
 
 
-```{r,  echo=FALSE, message=FALSE, warning=FALSE, eval=FALSE}
+```{r,  echo=FALSE, message=FALSE, warning=FALSE}
 
 fbDta %>%
   distinct(author, .keep_all = TRUE) %>%
@@ -648,7 +678,7 @@ fbDta %>%
   slice(1:20) %>%
   select( author, audience,profile) %>%
   arrange(desc(audience)) %>% 
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
     scroll_box(width = "900px", height = "400px")
 
@@ -668,7 +698,7 @@ name: for
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Very important media for mobile phone market in Croatia)
+(Important media for mobile phone market in Croatia)
 
 ---
 
@@ -711,8 +741,7 @@ forums <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 
 ```
 
-# Most important forums by activity
-<br>
+# Most important forums (activity)
 <br>
 
 ```{r , echo=FALSE, message=FALSE, warning=FALSE}
@@ -720,18 +749,18 @@ forums <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 forums %>%
   group_by(source) %>%
   count() %>%
-  arrange(desc(n)) %>% 
+  rename("Forum" = source, "No. of occurences" = n) %>%
+  arrange(desc("No. of occurences")) %>% 
   kable() %>%
     kable_styling() #%>%
  #   scroll_box(width = "900px", height = "400px")
 
 ```
 
-- add size of the channels
 
 ---
 
-# Most important forums by impressions
+# Most important forums (impressions)
 <br>
 <br>
 
@@ -741,7 +770,7 @@ forums %>%
   group_by(source) %>%
   summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
   arrange(desc(Impressions)) %>% 
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling()
   
   
@@ -759,7 +788,7 @@ forums %>%
   group_by(source) %>%
   summarise(Engagements = sum(engagements, na.rm = TRUE)) %>%
   arrange(desc(Engagements)) %>% 
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling()
   
   
@@ -768,7 +797,7 @@ forums %>%
 
 ---
 
-# Most important authors
+# Most important influencers
 <br>
 <br>
 
@@ -777,9 +806,10 @@ forums %>%
 
 forums %>%
   group_by(author, source) %>%
-  summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
+  summarise(Impressions = sum(impressions, na.rm = TRUE),
+            Activity = n()) %>%
   arrange(desc(Impressions)) %>% 
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
      scroll_box(width = "700px", height = "400px")
   
@@ -798,7 +828,7 @@ name: port
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Usualy the original content to be shared across social media)
+(Original content shared across other social media)
 
 ---
 
@@ -841,7 +871,7 @@ portals <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 
 ```
 
-# Most important portals (publications)
+# Most important portals (by publications)
 <br>
 <br>
 
@@ -850,9 +880,11 @@ portals <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 
 portals %>%
   group_by(source) %>%
-  count() %>%
-  arrange(desc(n)) %>% 
-  kable() %>%
+  count()  %>%
+  arrange(desc(n)) %>%
+  rename("Portal" = source,
+         "No. of publications" = n) %>% 
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
      scroll_box(width = "700px", height = "400px")
 
