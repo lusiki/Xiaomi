@@ -906,7 +906,7 @@ portals %>%
   group_by(source) %>%
   summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
   arrange(desc(Impressions)) %>%
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
      scroll_box(width = "700px", height = "400px")
 
@@ -927,18 +927,16 @@ portals %>%
   group_by(title, url, source, Date) %>%
   summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
   arrange(desc(Impressions)) %>%
-  kable() %>%
+  select(title, Impressions, source,url, Date) %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-     scroll_box(width = "700px", height = "400px")
+     scroll_box(width = "800px", height = "400px")
 
 
 
 ```
 
----
 
-
-# Content analysis
 
 ---
 
@@ -949,7 +947,7 @@ name: tw
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Informed minority in Croatia)
+(Informed but small comunity in Croatia)
 
 ---
 
@@ -1004,6 +1002,8 @@ twitter %>%
   group_by(type) %>%
   count() %>%
   arrange(desc(n)) %>% 
+  rename("Type of activity" = type, 
+         "No. of occurences" = n) %>%
   kable() %>%
     kable_styling() #%>%
 #     scroll_box(width = "700px", height = "400px")
@@ -1023,14 +1023,14 @@ twitter %>%
   group_by(author) %>%
   count() %>%
   arrange(desc(n)) %>% 
+  rename("Author" = author, 
+         "No. of publications" = n) %>%
   kable() %>%
-    kable_styling() #%>%
-#     scroll_box(width = "700px", height = "400px")
+    kable_styling() %>%
+     scroll_box(width = "700px", height = "400px")
 
 
 ```
-
-
 
 
 ---
@@ -1047,9 +1047,10 @@ twitter %>%
   group_by(text, author) %>%
   summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
   arrange(desc(Impressions)) %>% 
-  kable() %>%
+  select(text, Impressions, author) %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-     scroll_box(width = "700px", height = "400px")
+     scroll_box(width = "750px", height = "400px")
 
 
 
@@ -1071,11 +1072,9 @@ twitter %>%
   arrange(desc(audience)) %>%
   select(author,audience,profile) %>% 
   distinct(author, .keep_all = TRUE) %>% 
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-     scroll_box(width = "700px", height = "400px")
-
-
+     scroll_box(width = "750px", height = "400px")
 
 ```
 
@@ -1126,11 +1125,11 @@ yt <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
                                col_types = column_data_types) %>% 
   row_to_names(.,1) %>% 
   clean_names() %>%
-  select(title,text,"Date" = na,source,url, type, impressions, engagements, author,views, likes, comments) %>%
+  select(title,text,"Date" = na,source,url, type, impressions, engagements, author,views, likes_2, comments) %>%
   mutate(impressions = as.numeric(impressions)) %>%
   mutate(engagements = as.numeric(engagements)) %>%
   mutate(views = as.numeric(views)) %>%
-  mutate(likes = as.numeric(likes)) %>%
+  mutate(likes = as.numeric(likes_2)) %>%
   mutate(comments = as.numeric(comments))
 
 
@@ -1147,7 +1146,11 @@ yt <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 
 yt %>%
   group_by(type) %>%
-  count()
+  count() %>% 
+  rename("Type of activity" = type,
+         "No. of occurences" = n) %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
+    kable_styling() 
 
 ```
 
@@ -1168,7 +1171,8 @@ yt %>%
   summarise(Impressions = sum(impressions,na.rm = TRUE),
             Activity = n()) %>%
   arrange(desc(Activity)) %>%
-  kable() %>%
+  select(author, Activity, Impressions) %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
      scroll_box(width = "600px", height = "400px")
 
@@ -1192,10 +1196,10 @@ yt %>%
             Views = sum(views, na.rm = TRUE),
             Likes = sum(likes,na.rm = TRUE)) %>%
   arrange(desc(Impressions)) %>%
-  kable() %>%
+  select(title, Impressions, Comments, Views,Likes, url, author) %>%
+   kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-     scroll_box(width = "600px", height = "400px")
-
+     scroll_box(width = "750px", height = "400px")
 
 ```
 
@@ -1267,8 +1271,8 @@ press %>%
   summarise(Impressions = sum(impressions,na.rm = TRUE),
             Articles = n()) %>%
   arrange(desc(Articles)) %>%
-  select(source, Impressions, Articles) %>%
-  kable() %>%
+  select(source, Articles, Impressions) %>%
+   kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
      scroll_box(width = "600px", height = "400px")
   
@@ -1290,9 +1294,9 @@ press %>%
   summarise(Impressions = sum(impressions,na.rm = TRUE)) %>%
   arrange(desc(Impressions)) %>%
   select(title, Impressions, text, source, url) %>%
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-     scroll_box(width = "700px", height = "400px")
+     scroll_box(width = "750px", height = "400px")
   
 ```
 
@@ -1307,7 +1311,7 @@ name: insta
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-()
+
 
 ---
 
@@ -1365,9 +1369,9 @@ insta %>%
   summarise(Impressions = sum(impressions,na.rm = TRUE)) %>%
   arrange(desc(Impressions)) %>%
   select(url, Impressions, text) %>%
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-     scroll_box(width = "700px", height = "400px")
+     scroll_box(width = "750px", height = "400px")
 
 
 ```
@@ -1385,7 +1389,7 @@ insta %>%
   summarise(Likes = sum(likes,na.rm = TRUE)) %>%
   arrange(desc(Likes)) %>%
   select(url, Likes, text) %>%
-  kable() %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
      scroll_box(width = "700px", height = "400px")
 
@@ -1407,43 +1411,6 @@ Phone: + 385 98 162 30 52
 Mail: luka.sikic.gm@gmail.com
 <br>
 Web: http://www.contentio.biz/contact/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<br>
-<br>
 
 
 
