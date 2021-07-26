@@ -239,8 +239,6 @@ xiaomi %>%
 
 <br>
 <br>
-<br>
-
 
 1. [General Overview](#gen)
 
@@ -267,24 +265,26 @@ name: gen
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Trends in the Croatian social media space for mobile brands)
+(Trends in the Croatian social media space for mobile brands.)
 
 ---
 
 
 
 
-# Description
-
-## About
+# About
 <br>
 - This report covers complete Croatian social media space for July, 2021.
 <br>
 - Every mention of brands: xiaomi, samsung, huawei, vivo is included in the analysis.
 <br>
-- The GENERAL OVERVIEW part covers the full media space. The other parts cover individual social media.
+- The general overview part covers the full media space.
 <br>
-## Findings
+-The other parts cover individual social media.
+
+---
+
+# Findings
 <br>
 - Most social media activity is on forums and Facebook.
 <br>
@@ -298,7 +298,8 @@ name: gen
 
 # Frequency of mention
 <br>
-
+<br>
+<br>
 ```{r freqOFmention, echo=FALSE, message=FALSE, warning=FALSE}
 
 
@@ -329,7 +330,7 @@ freqOFmention %>%
 # Frequency of publication
 <br>
 <br>
-
+<br>
 ```{r freqOFpublication, echo=FALSE, message=FALSE, warning=FALSE}
 
 rijeci_clean %>%
@@ -433,8 +434,8 @@ landscapeFreq %>%
 
 # Media landscape frequency by brand
 <br>
-<br>
-```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 4, fig.width=10}
+
+```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 5, fig.width=10}
 
 rijeci_clean %>%
   filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
@@ -475,7 +476,7 @@ name: fb
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Lots of activity about mobile phones)
+(Most active social media for mobile phones.)
 
 ---
 
@@ -517,7 +518,7 @@ facebook <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 ```
 
 
-# Overview of FB activity
+# Overview of activity
 <br>
 <br>
 
@@ -563,10 +564,10 @@ fbStat %>%
 fbDta %>%
   top_n(.,10, wt = "impressions") %>% 
   arrange(desc(impressions)) %>%
-  select(text, Activity, url, impressions, engagements, likes, Date) %>%
+  select(text, Activity, author, url, impressions, engagements, likes, Date) %>%
   kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-    scroll_box(width = "700px", height = "400px")
+    scroll_box(width = "750px", height = "400px")
 
 ```
 
@@ -581,10 +582,10 @@ fbDta %>%
 fbDta %>%
   top_n(.,10, wt = "engagements") %>% 
   arrange(desc(engagements)) %>%
-  select(text, Activity, url, impressions, engagements, likes, Date) %>%
+  select(text, Activity, author, url, impressions, engagements, likes, Date) %>%
   kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-    scroll_box(width = "700px", height = "400px")
+    scroll_box(width = "750px", height = "400px")
 
 ```
 
@@ -600,10 +601,10 @@ fbDta %>%
 fbDta %>%
   top_n(.,10, wt = "likes") %>% 
   arrange(desc(likes)) %>%
-  select(text, Activity, url, impressions, engagements, likes, Date) %>%
+  select(text, Activity, author, url, impressions, engagements, likes, Date) %>%
   kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-    scroll_box(width = "700px", height = "400px")
+    scroll_box(width = "750px", height = "400px")
 
 ```
 
@@ -622,7 +623,7 @@ fbDta %>%
   select(author, impressions, engagements, likes, text, Activity,  url, Date) %>%
   kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-    scroll_box(width = "700px", height = "400px")
+    scroll_box(width = "750px", height = "400px")
 ```
 
 ---
@@ -640,7 +641,7 @@ fbDta %>%
   select(author, engagements, impressions, likes, text, Activity,  url, Date) %>%
   kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-    scroll_box(width = "900px", height = "400px")
+    scroll_box(width = "750px", height = "400px")
 ```
 
 
@@ -659,7 +660,7 @@ fbDta %>%
   select(author, likes, impressions, engagements, text, Activity,  url, Date) %>%
   kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-    scroll_box(width = "900px", height = "400px")
+    scroll_box(width = "750px", height = "400px")
 ```
 
 
@@ -680,7 +681,7 @@ fbDta %>%
   arrange(desc(audience)) %>% 
   kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-    scroll_box(width = "900px", height = "400px")
+    scroll_box(width = "750px", height = "400px")
 
 #fbDta %>%
 #  group_by(author) %>%
