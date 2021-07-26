@@ -14,7 +14,6 @@ output:
       countIncrementalSlides: false
 ---
 
-
 ```{r setup, include=FALSE}
 options(htmltools.dir.version = FALSE)
 library(knitr)
@@ -232,7 +231,6 @@ xiaomi %>%
   filter(!is.na(word)) -> rijeci_clean
 
 ```
-
 
 
 # Contents
@@ -555,7 +553,7 @@ fbStat %>%
 
 ---
 
-# Most important activity by impressions
+# Most important activity (impressions)
 <br>
 <br>
 
@@ -573,7 +571,7 @@ fbDta %>%
 
 ---
 
-# Most important activity by engagement
+# Most important activity (engagement)
 <br>
 <br>
 
@@ -591,7 +589,7 @@ fbDta %>%
 
 ---
 
-# Most important activity by likes
+# Most important activity (likes)
 <br>
 <br>
 
@@ -699,7 +697,7 @@ name: for
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Important media for mobile phone market in Croatia)
+(Important media for mobile phone market in Croatia.)
 
 ---
 
@@ -750,14 +748,15 @@ forums <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 forums %>%
   group_by(source) %>%
   count() %>%
-  rename("Forum" = source, "No. of occurences" = n) %>%
-  arrange(desc("No. of occurences")) %>% 
+  arrange(desc(n)) %>%
+  rename("Forum" = source, "No. of occurences" = n)  %>% 
   kable() %>%
     kable_styling() #%>%
  #   scroll_box(width = "900px", height = "400px")
 
 ```
 
+.footnote[[*]Occurences denote the activity on a forum that mentions the brand.]
 
 ---
 
@@ -779,7 +778,7 @@ forums %>%
 
 ---
 
-# Most important forums by engagements
+# Most important forums (engagements)
 <br>
 <br>
 
@@ -829,7 +828,7 @@ name: port
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Original content shared across other social media)
+(Original content shared across other social media.)
 
 ---
 
@@ -872,7 +871,7 @@ portals <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 
 ```
 
-# Most important portals (by publications)
+# Most important portals (publications)
 <br>
 <br>
 
@@ -948,7 +947,7 @@ name: tw
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Informed but small comunity in Croatia)
+(Informed but small comunity in Croatia.)
 
 ---
 
@@ -1028,7 +1027,7 @@ twitter %>%
          "No. of publications" = n) %>%
   kable() %>%
     kable_styling() %>%
-     scroll_box(width = "700px", height = "400px")
+     scroll_box(width = "750px", height = "400px")
 
 
 ```
@@ -1036,7 +1035,7 @@ twitter %>%
 
 ---
 
-# Most important tweets (by impressions)
+# Most important tweets (impressions)
 <br>
 <br>
 
@@ -1045,7 +1044,7 @@ twitter %>%
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
 
 twitter %>%
-  group_by(text, author) %>%
+  group_by(text, author, url) %>%
   summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
   arrange(desc(Impressions)) %>% 
   select(text, Impressions, author) %>%
@@ -1060,7 +1059,7 @@ twitter %>%
 
 ---
 
-# Authors by the audience size
+# Most influential profiles (audience size)
 <br>
 <br>
 
@@ -1308,7 +1307,7 @@ press %>%
 class: inverse, center, middle
 name: insta
 
-# Instagram
+# INSTAGRAM
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
@@ -1412,6 +1411,20 @@ Phone: + 385 98 162 30 52
 Mail: luka.sikic.gm@gmail.com
 <br>
 Web: http://www.contentio.biz/contact/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
