@@ -1089,7 +1089,7 @@ name: yt
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-(Social media with highest attention focus)
+(Social media with highest attention focus.)
 
 ---
 
@@ -1139,7 +1139,7 @@ yt <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 # Videos by type
 <br>
 <br>
-
+<br>
 
 
 ```{r, echo=FALSE, message=FALSE, warning=FALSE}
@@ -1174,7 +1174,7 @@ yt %>%
   select(author, Activity, Impressions) %>%
   kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
     kable_styling() %>%
-     scroll_box(width = "600px", height = "400px")
+     scroll_box(width = "750px", height = "400px")
 
 
 
@@ -1213,7 +1213,7 @@ name: pres
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-Not very active media for mobile phones)
+(Not very active media for mobile phones.)
 
 ---
 
@@ -1273,8 +1273,8 @@ press %>%
   arrange(desc(Articles)) %>%
   select(source, Articles, Impressions) %>%
    kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
-    kable_styling() %>%
-     scroll_box(width = "600px", height = "400px")
+    kable_styling() # >%
+  #   scroll_box(width = "750px", height = "400px")
   
 
 
@@ -1357,7 +1357,7 @@ insta <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
 ```
 
 
-# Most important posts (by impressions)
+# Most important posts (impressions)
 <br>
 <br>
 
@@ -1378,7 +1378,7 @@ insta %>%
 
 ---
 
-# Most important posts (by likes)
+# Most important posts (likes)
 <br>
 <br>
 
@@ -1403,7 +1403,7 @@ insta %>%
 <br>
 <br>
 ### Contentio d.o.o
-br>
+<br>
 Adress: Kralja Stjepana Tomaševića 7 , 10410, Velika Gorica
 <br>
 Phone: + 385 98 162 30 52
