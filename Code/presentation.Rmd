@@ -87,6 +87,32 @@ library(readxl)
 
 ```
 
+
+```{r importImprove, warning=F, echo=F, message=F, eval=FALSE}
+
+path <- "../Dta/Xiaomi full.xlsx"
+
+
+data <- lapply(excel_sheets(path),
+              read_xlsx,
+              path = path,
+              skip = 1,
+              .name_repair = "universal")
+
+all <- data[[1]]
+instagram <- data[[2]]
+forums <- data[[3]]
+portals <- data[[4]]
+youtube <- data[[5]]
+twitter <- data[[6]]
+press <- data[[7]]
+facebook <- data[[8]]
+tv <-  data[[9]]
+
+```
+
+
+
 ```{r importDta, warning=F, echo=F, message=F, eval=TRUE}
 
 xiaomiD <- read.csv2("../Dta/Xiaomi full.csv") %>%
