@@ -97,7 +97,7 @@ data <- lapply(excel_sheets(path),
               read_xlsx,
               path = path,
               skip = 1,
-              .name_repair = "universal")
+              .name_repair = "tolower")
 
 all <- data[[1]]
 instagram <- data[[2]]
