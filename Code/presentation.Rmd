@@ -300,11 +300,14 @@ name: gen
 <br>
 - This report covers complete Croatian social media space for July, 2021.
 <br>
+<br>
 - Every mention of brands: xiaomi, samsung, huawei, vivo is included in the analysis.
+<br>
 <br>
 - The general overview part covers the full media space.
 <br>
--The other parts cover individual social media.
+<br>
+- The other parts cover individual social media.
 
 ---
 
@@ -312,7 +315,9 @@ name: gen
 <br>
 - Most social media activity is on forums and Facebook.
 <br>
+<br>
 - Small number of newspaper (portal) articles are important and shared across different social media.
+<br>
 <br>
 - Recommended influencers are on forums and facebook.
 
