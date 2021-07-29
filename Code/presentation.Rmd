@@ -464,7 +464,7 @@ landscapeFreq %>%
 # Media landscape frequency by brand
 <br>
 
-```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 5, fig.width=10}
+```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 5, fig.width=12}
 
 rijeci_clean %>%
   filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
