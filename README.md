@@ -8,7 +8,7 @@
 
 Monthly reports for Xiaomi in Croatian media:
 
-[August, 2021](https://raw.githack.com/lusiki/Xiaomi/main/Code/presentation.html#1)
+[August, 2021](https://raw.githack.com/lusiki/Xiaomi/main/Code/presentation_08-21.html)
 
 [July, 2021](https://raw.githack.com/lusiki/Xiaomi/main/Code/presentation.html#1)
 
