@@ -115,7 +115,7 @@ tv <-  data[[9]]
 
 ```{r importDta, warning=F, echo=F, message=F, eval=TRUE}
 
-xiaomiD <- read.csv2("../Dta/Xiaomi full.csv") %>%
+xiaomiD <- read.csv2("../Dta/08-21.csv") %>%
   select(X.3) %>%
   row_to_names(.,1) %>%
   mutate(Published = substr(Published,1,10)) #%>%
@@ -126,7 +126,7 @@ Datum  <- mutate(xiaomiD, b2= as.Date(Published, format= "%d.%m.%Y")) %>%
   rename(Datum =b2)
 
 
-xiaomi <- readxl::read_excel("../Dta/Xiaomi full.xlsx") %>% 
+xiaomi <- readxl::read_excel("../Dta/08-21.xlsx") %>% 
   row_to_names(.,1) %>% 
   clean_names() %>%
 #  select(-c(1,17:25,28:33,37:41)) %>%
@@ -511,7 +511,7 @@ name: fb
 
 ```{r importFacebook, echo=FALSE, message=FALSE, warning=FALSE}
 
-site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+site_data_columns <- read_excel("../Dta/08-21.xlsx",
                                sheet = "Facebook")
 
 site_data_column_names <- colnames(site_data_columns)
@@ -534,7 +534,7 @@ column_data_types[5] <- "date"
 
 
 
-facebook <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+facebook <- readxl::read_excel("../Dta/08-21.xlsx",
                                sheet = "Facebook",
                                col_types = column_data_types) %>% 
   row_to_names(.,1) %>% 
@@ -735,7 +735,7 @@ name: for
 
 ```{r importForums, echo=FALSE, message=FALSE, warning=FALSE}
 
-site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+site_data_columns <- read_excel("../Dta/08-21.xlsx",
                                sheet = "Forums")
 
 site_data_column_names <- colnames(site_data_columns)
@@ -759,7 +759,7 @@ column_data_types[10] <- "guess"
 
 
 
-forums <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+forums <- readxl::read_excel("../Dta/08-21.xlsx",
                                sheet = "Forums",
                                col_types = column_data_types) %>% 
   row_to_names(.,1) %>% 
@@ -866,7 +866,7 @@ name: port
 
 ```{r importPortals, echo=FALSE, message=FALSE, warning=FALSE}
 
-site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+site_data_columns <- read_excel("../Dta/08-21.xlsx",
                                sheet = "Portals")
 
 site_data_column_names <- colnames(site_data_columns)
@@ -890,7 +890,7 @@ column_data_types[10] <- "guess"
 
 
 
-portals <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+portals <- readxl::read_excel("../Dta/08-21.xlsx",
                                sheet = "Portals",
                                col_types = column_data_types) %>% 
   row_to_names(.,1) %>% 
@@ -984,7 +984,7 @@ name: tw
 
 ```{r importTwitter, echo=FALSE, message=FALSE, warning=FALSE}
 
-site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+site_data_columns <- read_excel("../Dta/08-21.xlsx",
                                sheet = "Twitter")
 
 site_data_column_names <- colnames(site_data_columns)
@@ -1008,7 +1008,7 @@ column_data_types[10] <- "guess"
 
 
 
-twitter <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+twitter <- readxl::read_excel("../Dta/08-21.xlsx",
                                sheet = "Twitter",
                                col_types = column_data_types) %>% 
   row_to_names(.,1) %>% 
@@ -1127,7 +1127,7 @@ name: yt
 
 ```{r importYT, echo=FALSE, message=FALSE, warning=FALSE}
 
-site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+site_data_columns <- read_excel("../Dta/08-21.xlsx",
                                sheet = "YouTube")
 
 site_data_column_names <- colnames(site_data_columns)
@@ -1151,7 +1151,7 @@ column_data_types[10] <- "guess"
 
 
 
-yt <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+yt <- readxl::read_excel("../Dta/08-21.xlsx",
                                sheet = "YouTube",
                                col_types = column_data_types) %>% 
   row_to_names(.,1) %>% 
@@ -1251,7 +1251,7 @@ name: pres
 
 ```{r importPress, echo=FALSE, message=FALSE, warning=FALSE}
 
-site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+site_data_columns <- read_excel("../Dta/08-21.xlsx",
                                sheet = "Press")
 
 site_data_column_names <- colnames(site_data_columns)
@@ -1275,7 +1275,7 @@ column_data_types[10] <- "guess"
 
 
 
-press <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+press <- readxl::read_excel("../Dta/08-21.xlsx",
                                sheet = "Press",
                                col_types = column_data_types) %>% 
   row_to_names(.,1) %>% 
@@ -1348,7 +1348,7 @@ name: insta
 
 ```{r importInsta, echo=FALSE, message=FALSE, warning=FALSE}
 
-site_data_columns <- read_excel("../Dta/Xiaomi full.xlsx",
+site_data_columns <- read_excel("../Dta/08-21.xlsx",
                                sheet = "Instagram")
 
 site_data_column_names <- colnames(site_data_columns)
@@ -1372,7 +1372,7 @@ column_data_types[10] <- "guess"
 
 
 
-insta <- readxl::read_excel("../Dta/Xiaomi full.xlsx",
+insta <- readxl::read_excel("../Dta/08-21.xlsx",
                                sheet = "Instagram",
                                col_types = column_data_types) %>% 
   row_to_names(.,1) %>% 
