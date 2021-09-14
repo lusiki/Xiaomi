@@ -17,15 +17,15 @@ Monthly reports for Xiaomi in Croatian media:
 
 [Forums](https://raw.githack.com/lusiki/Xiaomi/main/August/Facebook.html#1)
 
-[Portals]()
+[Portals](https://raw.githack.com/lusiki/Xiaomi/main/August/Portals.html)
 
-[Twitter]()
+[Twitter](https://raw.githack.com/lusiki/Xiaomi/main/August/Twitter.html)
 
-[YouTube]()
+[YouTube](https://raw.githack.com/lusiki/Xiaomi/main/August/YouTube.html)
 
-[Press]()
+[Press](https://raw.githack.com/lusiki/Xiaomi/main/August/Press.html)
 
-[Instagram]()
+[Instagram](https://raw.githack.com/lusiki/Xiaomi/main/August/Instagram.html)
 
 
 [August, 2021](https://raw.githack.com/lusiki/Xiaomi/main/Code/presentation_08-21.html)
