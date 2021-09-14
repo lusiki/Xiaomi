@@ -34,23 +34,21 @@ Monthly *Share of Voice* reports:
 #**July**#
 ##########
 
-[General overview]()
+[General overview](https://raw.githack.com/lusiki/Xiaomi/main/July/General.html)
 
-[Facebook]()
+[Facebook](https://raw.githack.com/lusiki/Xiaomi/main/July/Facebook.html)
 
-[Forums]()
+[Forums](https://raw.githack.com/lusiki/Xiaomi/main/July/Portals.html)
 
-[Portals]()
+[Portals](https://github.com/lusiki/Xiaomi/blob/main/July/Portals.html)
 
-[Twitter]()
+[Twitter](https://raw.githack.com/lusiki/Xiaomi/main/July/Twitter.html)
 
-[YouTube]()
+[YouTube](https://raw.githack.com/lusiki/Xiaomi/main/July/YouTube.html)
 
-[Press]()
+[Press](https://raw.githack.com/lusiki/Xiaomi/main/July/Press.html)
 
-[Instagram]()
-
-
+[Instagram](https://raw.githack.com/lusiki/Xiaomi/main/July/Instagram.html)
 
 
 
