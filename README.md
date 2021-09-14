@@ -6,10 +6,12 @@
 
 
 
-Monthly reports for Xiaomi in Croatian media:
+Monthly *Share of Voice* reports:
 
+############
+#**August**#
+############
 
-**August**
 
 [General overview](https://raw.githack.com/lusiki/Xiaomi/main/August/General.html#1)
 
@@ -28,17 +30,33 @@ Monthly reports for Xiaomi in Croatian media:
 [Instagram](https://raw.githack.com/lusiki/Xiaomi/main/August/Instagram.html)
 
 
-[August, 2021](https://raw.githack.com/lusiki/Xiaomi/main/Code/presentation_08-21.html)
+##########
+#**July**#
+##########
+
+[General overview]()
+
+[Facebook]()
+
+[Forums]()
+
+[Portals]()
+
+[Twitter]()
+
+[YouTube]()
+
+[Press]()
+
+[Instagram]()
 
 
 
 
-**July**
 
 
-[July, 2021](https://raw.githack.com/lusiki/Xiaomi/main/Code/presentation_07-21.html#1)
 
-Weekly reports for Xiaomi in Croatian media:
+Special *Share of Voice* reports:
 
 [19/07-23/07 July,2021](https://raw.githack.com/lusiki/Xiaomi/main/Code/weekly19-23.html)
 
