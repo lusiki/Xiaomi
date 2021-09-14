@@ -15,6 +15,12 @@ Monthly reports for Xiaomi in Croatian media:
 
 [Facebook](https://raw.githack.com/lusiki/Xiaomi/main/August/Facebook.html#1)
 
+[Forums](https://raw.githack.com/lusiki/Xiaomi/main/August/Facebook.html#1)
+
+[Portals]()
+
+
+
 
 
 
