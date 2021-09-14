@@ -8,9 +8,9 @@
 
 Monthly *Share of Voice* reports:
 
-############
-#**August**#
-############
+#############**August**#############
+
+
 
 
 [General overview](https://raw.githack.com/lusiki/Xiaomi/main/August/General.html#1)
@@ -30,9 +30,9 @@ Monthly *Share of Voice* reports:
 [Instagram](https://raw.githack.com/lusiki/Xiaomi/main/August/Instagram.html)
 
 
-##########
-#**July**#
-##########
+###########**July**###########
+
+
 
 [General overview](https://raw.githack.com/lusiki/Xiaomi/main/July/General.html)
 
