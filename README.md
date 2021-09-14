@@ -19,10 +19,13 @@ Monthly reports for Xiaomi in Croatian media:
 
 [Portals]()
 
+[Twitter]()
 
+[YouTube]()
 
+[Press]()
 
-
+[Instagram]()
 
 
 [August, 2021](https://raw.githack.com/lusiki/Xiaomi/main/Code/presentation_08-21.html)
