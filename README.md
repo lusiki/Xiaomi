@@ -11,7 +11,7 @@ Monthly reports for Xiaomi in Croatian media:
 
 **August**
 
-[General overview]()
+[General overview](https://raw.githack.com/lusiki/Xiaomi/main/August/General.html#1)
 
 
 
