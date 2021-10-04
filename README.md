@@ -19,7 +19,7 @@ Monthly *Share of Voice* reports:
 
 [Forums](https://raw.githack.com/lusiki/Xiaomi/main/September/Forums.html#1)
 
-[Portals](https://github.com/lusiki/Xiaomi/blob/main/September/Portals.html)
+[Portals](https://raw.githack.com/lusiki/Xiaomi/main/September/Portals.html#1)
 
 [Twitter](https://raw.githack.com/lusiki/Xiaomi/main/September/Twitter.html#1)
 
