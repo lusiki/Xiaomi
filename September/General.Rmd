@@ -116,7 +116,7 @@ tv <-  data[[9]]
 ```{r importDta, warning=F, echo=F, message=F, eval=TRUE}
 
 xiaomiD <- read.csv2("../dta/10-21.csv") %>%
-#  select(X.3) %>%
+  select(X.3) %>%
   row_to_names(.,1) %>%
   mutate(Published = substr(Published,1,10)) #%>%
 #mutate(Datum = as.Date(Published,"d%.m%.Y%"))
