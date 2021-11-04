@@ -1,6 +1,6 @@
 ---
 title: "SHARE OF VOICE REPORT"
-author: "Croatian social media overview for December, 2021"
+author: "Croatian social media overview for September, 2021"
 date: "Contentio d.o.o"
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
 subtitle: "Xiaomi"
@@ -115,7 +115,7 @@ tv <-  data[[9]]
 
 ```{r importDta, warning=F, echo=F, message=F, eval=TRUE}
 
-xiaomiD <- read.csv2("../dta/10-21.csv") %>%
+xiaomiD <- read.csv2("../dta/09-21.csv") %>%
   select(X.3) %>%
   row_to_names(.,1) %>%
   mutate(Published = substr(Published,1,10)) #%>%
@@ -126,7 +126,7 @@ Datum  <- mutate(xiaomiD, b2= as.Date(Published, format= "%d.%m.%Y")) %>%
   rename(Datum =b2)
 
 
-xiaomi <- readxl::read_excel("../dta/10-21.xlsx") %>% 
+xiaomi <- readxl::read_excel("../dta/09-21.xlsx") %>% 
   row_to_names(.,1) %>% 
   clean_names() %>%
 #  select(-c(1,17:25,28:33,37:41)) %>%
