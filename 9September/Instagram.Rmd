@@ -1,6 +1,6 @@
 ---
 title: "SHARE OF VOICE REPORT"
-author: "Croatian social media overview for December, 2021"
+author: "Croatian social media overview for September, 2021"
 date: "Contentio d.o.o"
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
 subtitle: "Xiaomi"
@@ -114,7 +114,7 @@ name: insta
 rm(list=ls())
 
 
-site_data_columns <- read_excel("../dta/10-21.xlsx",
+site_data_columns <- read_excel("../dta/09-21.xlsx",
                                sheet = "Instagram")
 
 site_data_column_names <- colnames(site_data_columns)
@@ -138,7 +138,7 @@ column_data_types[10] <- "guess"
 
 
 
-insta <- readxl::read_excel("../dta/10-21.xlsx",
+insta <- readxl::read_excel("../dta/09-21.xlsx",
                                sheet = "Instagram",
                                col_types = column_data_types) %>% 
   row_to_names(.,1) %>% 
