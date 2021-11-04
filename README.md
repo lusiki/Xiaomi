@@ -32,21 +32,21 @@ Monthly *Share of Voice* reports:
 #############**September**#############
 
 
-[General overview](https://raw.githack.com/lusiki/Xiaomi/main/September/General.html#1)
+[General overview](https://raw.githack.com/lusiki/Xiaomi/main/9September/Facebook.html)
 
-[Facebook](https://raw.githack.com/lusiki/Xiaomi/main/September/Facebook.html)
+[Facebook](https://raw.githack.com/lusiki/Xiaomi/main/9September/Forums.html)
 
-[Forums](https://raw.githack.com/lusiki/Xiaomi/main/September/Forums.html#1)
+[Forums](https://raw.githack.com/lusiki/Xiaomi/main/9September/Forums.html#1)
 
-[Portals](https://raw.githack.com/lusiki/Xiaomi/main/September/Portals.html#1)
+[Portals](https://raw.githack.com/lusiki/Xiaomi/main/9September/Portals.html#1)
 
-[Twitter](https://raw.githack.com/lusiki/Xiaomi/main/September/Twitter.html#1)
+[Twitter](https://raw.githack.com/lusiki/Xiaomi/main/9September/Twitter.html#1)
 
-[YouTube](https://raw.githack.com/lusiki/Xiaomi/main/September/YouTube.html#1)
+[YouTube](https://raw.githack.com/lusiki/Xiaomi/main/9September/YouTube.html#1)
 
-[Press](https://raw.githack.com/lusiki/Xiaomi/main/September/Press.html#1)
+[Press](https://raw.githack.com/lusiki/Xiaomi/main/9September/Press.html#1)
 
-[Instagram](https://raw.githack.com/lusiki/Xiaomi/main/September/Instagram.html#1)
+[Instagram](https://raw.githack.com/lusiki/Xiaomi/main/9September/Instagram.html#1)
 
 
 
@@ -56,42 +56,42 @@ Monthly *Share of Voice* reports:
 
 
 
-[General overview](https://raw.githack.com/lusiki/Xiaomi/main/August/General.html#1)
+[General overview](https://raw.githack.com/lusiki/Xiaomi/main/8August/General.html#1)
 
-[Facebook](https://raw.githack.com/lusiki/Xiaomi/main/August/Facebook.html#1)
+[Facebook](https://raw.githack.com/lusiki/Xiaomi/main/8August/Facebook.html#1)
 
-[Forums](https://raw.githack.com/lusiki/Xiaomi/main/August/Facebook.html#1)
+[Forums](https://raw.githack.com/lusiki/Xiaomi/main/8August/Facebook.html#1)
 
-[Portals](https://raw.githack.com/lusiki/Xiaomi/main/August/Portals.html)
+[Portals](https://raw.githack.com/lusiki/Xiaomi/main/8August/Portals.html)
 
-[Twitter](https://raw.githack.com/lusiki/Xiaomi/main/August/Twitter.html)
+[Twitter](https://raw.githack.com/lusiki/Xiaomi/main/8August/Twitter.html)
 
-[YouTube](https://raw.githack.com/lusiki/Xiaomi/main/August/YouTube.html)
+[YouTube](https://raw.githack.com/lusiki/Xiaomi/main/8August/YouTube.html)
 
-[Press](https://raw.githack.com/lusiki/Xiaomi/main/August/Press.html)
+[Press](https://raw.githack.com/lusiki/Xiaomi/main/8August/Press.html)
 
-[Instagram](https://raw.githack.com/lusiki/Xiaomi/main/August/Instagram.html)
+[Instagram](https://raw.githack.com/lusiki/Xiaomi/main8/August/Instagram.html)
 
 
 ###########**July**###########
 
 
 
-[General overview](https://raw.githack.com/lusiki/Xiaomi/main/July/General.html)
+[General overview](https://raw.githack.com/lusiki/Xiaomi/main/7July/General.html)
 
-[Facebook](https://raw.githack.com/lusiki/Xiaomi/main/July/Facebook.html)
+[Facebook](https://raw.githack.com/lusiki/Xiaomi/main/7July/Facebook.html)
 
-[Forums](https://raw.githack.com/lusiki/Xiaomi/main/July/Portals.html)
+[Forums](https://raw.githack.com/lusiki/Xiaomi/main/7July/Portals.html)
 
-[Portals](https://github.com/lusiki/Xiaomi/blob/main/July/Portals.html)
+[Portals](https://github.com/lusiki/Xiaomi/blob/main/7July/Portals.html)
 
-[Twitter](https://raw.githack.com/lusiki/Xiaomi/main/July/Twitter.html)
+[Twitter](https://raw.githack.com/lusiki/Xiaomi/main/7July/Twitter.html)
 
-[YouTube](https://raw.githack.com/lusiki/Xiaomi/main/July/YouTube.html)
+[YouTube](https://raw.githack.com/lusiki/Xiaomi/main/7July/YouTube.html)
 
-[Press](https://raw.githack.com/lusiki/Xiaomi/main/July/Press.html)
+[Press](https://raw.githack.com/lusiki/Xiaomi/main/7July/Press.html)
 
-[Instagram](https://raw.githack.com/lusiki/Xiaomi/main/July/Instagram.html)
+[Instagram](https://raw.githack.com/lusiki/Xiaomi/main/7July/Instagram.html)
 
 
 
