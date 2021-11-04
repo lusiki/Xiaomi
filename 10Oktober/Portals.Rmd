@@ -1,6 +1,6 @@
 ---
 title: "SHARE OF VOICE REPORT"
-author: "Croatian social media overview for July, 2021"
+author: "Croatian social media overview for October, 2021"
 date: "Contentio d.o.o"
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
 subtitle: "Xiaomi"
@@ -115,7 +115,7 @@ name: port
 
 rm(list=ls())
 
-site_data_columns <- read_excel("../dta/07-21.xlsx",
+site_data_columns <- read_excel("../dta/10-21.xlsx",
                                sheet = "Portals")
 
 site_data_column_names <- colnames(site_data_columns)
@@ -139,7 +139,7 @@ column_data_types[10] <- "guess"
 
 
 
-portals <- readxl::read_excel("../dta/07-21.xlsx",
+portals <- readxl::read_excel("../dta/10-21.xlsx",
                                sheet = "Portals",
                                col_types = column_data_types) %>% 
   row_to_names(.,1) %>% 
