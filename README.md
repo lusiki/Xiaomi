@@ -12,21 +12,21 @@ Monthly *Share of Voice* reports:
 #############**December**#############
 
 
-[General overview](https://raw.githack.com/lusiki/Xiaomi/main/September/General.html#1)
+[General overview]())
 
-[Facebook](https://raw.githack.com/lusiki/Xiaomi/main/September/Facebook.html)
+[Facebook](https://raw.githack.com/lusiki/Xiaomi/main/December/Facebook.html)
 
-[Forums](https://raw.githack.com/lusiki/Xiaomi/main/September/Forums.html#1)
+[Forums](https://raw.githack.com/lusiki/Xiaomi/main/December/Forums.html)
 
-[Portals](https://raw.githack.com/lusiki/Xiaomi/main/September/Portals.html#1)
+[Portals]()
 
-[Twitter](https://raw.githack.com/lusiki/Xiaomi/main/September/Twitter.html#1)
+[Twitter]()
 
-[YouTube](https://raw.githack.com/lusiki/Xiaomi/main/September/YouTube.html#1)
+[YouTube]()
 
-[Press](https://raw.githack.com/lusiki/Xiaomi/main/September/Press.html#1)
+[Press]()
 
-[Instagram](https://raw.githack.com/lusiki/Xiaomi/main/September/Instagram.html#1)
+[Instagram]()
 
 
 #############**September**#############
