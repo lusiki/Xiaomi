@@ -32,9 +32,9 @@ Monthly *Share of Voice* reports:
 #############**September**#############
 
 
-[General overview](https://raw.githack.com/lusiki/Xiaomi/main/9September/Facebook.html)
+[General overview](https://raw.githack.com/lusiki/Xiaomi/main/9September/General.html)
 
-[Facebook](https://raw.githack.com/lusiki/Xiaomi/main/9September/Forums.html)
+[Facebook](https://raw.githack.com/lusiki/Xiaomi/main/9September/Facebook.html)
 
 [Forums](https://raw.githack.com/lusiki/Xiaomi/main/9September/Forums.html#1)
 
