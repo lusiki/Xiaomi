@@ -12,7 +12,7 @@ Monthly *Share of Voice* reports:
 #############**December**#############
 
 
-[General overview]())
+[General overview]()
 
 [Facebook](https://raw.githack.com/lusiki/Xiaomi/main/10Oktober/Facebook.html)
 
