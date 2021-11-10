@@ -9,7 +9,7 @@
 Monthly *Share of Voice* reports:
 
 
-#############**December**#############
+#############**December**############# 
 
 
 [General overview](https://raw.githack.com/lusiki/Xiaomi/main/10Oktober/General.html)
