@@ -1,7 +1,7 @@
 ---
 title: "SHARE OF VOICE REPORT"
 author: "Croatian social media overview for October, 2021"
-date: "Contentio d.o.o"
+date: ""
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
 subtitle: "Xiaomi"
 output:
