@@ -238,6 +238,22 @@ forums %>%
 
 # CONTACT
 
+<br>
+<br>
+<br>
+<br>
+**LUKOS**, obrt za informacijske djelatnosti
+<br>
+Novska, Vinogradska ulica 3G
+<br>
+doc.dr.sc.Luka Šikić
+<br><br>
+Kontakt:
+<br>
+mob: 098/162-30-52
+<br>
+email:lukos.usluge@gmail.com
+<br>
 
 
 

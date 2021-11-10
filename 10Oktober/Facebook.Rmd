@@ -1,7 +1,7 @@
 ---
 title: "SHARE OF VOICE REPORT"
 author: "Croatian social media overview for October, 2021"
-date: "Contentio d.o.o"
+date: ""
 # subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
 subtitle: "Xiaomi"
 output:
@@ -108,7 +108,7 @@ name: fb
 
 <html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
 
-()
+
 
 ---
 
@@ -334,6 +334,22 @@ fbDta %>%
 ---
 
 # CONTACT
+<br>
+<br>
+<br>
+<br>
+**LUKOS**, obrt za informacijske djelatnosti
+<br>
+Novska, Vinogradska ulica 3G
+<br>
+doc.dr.sc.Luka Šikić
+<br><br>
+Kontakt:
+<br>
+mob: 098/162-30-52
+<br>
+email:lukos.usluge@gmail.com
+<br>
 
 
 
