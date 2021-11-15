@@ -1,0 +1,485 @@
+---
+title: "SHARE OF VOICE REPORT"
+author: "Weakly Croatian media overview"
+date: "08/11/2021-15/11/2021"
+# subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
+subtitle: "Xiaomi"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts] 
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(knitr)
+opts_chunk$set(
+  fig.align="center", #fig.width=6, fig.height=4.5, 
+  # out.width="748px", #out.length="520.75px",
+  dpi=400, #fig.path='Figs/',
+  cache=F#, echo=F, warning=F, message=F
+  )
+
+
+# Define pink color
+red_pink <- "#e64173"
+turquoise <- "#20B2AA"
+orange <- "#FFA500"
+red <- "#fb6107"
+blue <- "#2b59c3"
+green <- "#8bb174"
+grey_light <- "grey70"
+grey_mid <- "grey50"
+grey_dark <- "grey20"
+purple <- "#6A5ACD"
+slate <- "#314f4f"
+# Dark slate grey: #314f4f
+# Knitr options
+
+```
+
+```{css, echo = F, eval = T}
+@media print {
+  .has-continuation {
+    display: block !important;
+  }
+}
+remark-slide-content {
+  font-size: 22px;
+  padding: 20px 80px 20px 80px;
+}
+.remark-code, .remark-inline-code {
+  background: #f0f0f0;
+}
+.remark-code {
+  font-size: 16px;
+}
+.mid. remark-code { /*Change made here*/
+  font-size: 60% !important;
+}
+.tiny .remark-code { /*Change made here*/
+  font-size: 40% !important;
+}
+```
+
+```{r library, warning=F, echo=F, message=F, eval=TRUE}
+
+
+library(tidyverse)  # data manipulation and visualization
+library(gridExtra)  # plot arrangement
+library(patchwork)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(janitor)
+library(httr)
+library(tidytext)
+library(kableExtra)
+library(data.table)
+library(scales)
+library(readxl)
+
+
+```
+
+
+
+
+```{r importImprove, warning=F, echo=F, message=F, eval=FALSE}
+
+path <- "../Dta/08_11_2021-15_11_2021.xlsx"
+
+
+data <- lapply(excel_sheets(path),
+              read_xlsx,
+              path = path,
+              skip = 1)
+
+all <- data[[1]]
+instagram <- data[[2]]
+forums <- data[[3]]
+portals <- data[[4]]
+youtube <- data[[5]]
+twitter <- data[[6]]
+press <- data[[7]]
+facebook <- data[[8]]
+tv <-  data[[9]]
+
+```
+
+
+```{r importDta, warning=F, echo=F, message=F, eval=TRUE}
+
+xiaomiD <- read.csv2("../dta/Weekly/08_11_2021-15_11_2021.csv") %>%
+  select(X.3) %>%
+  row_to_names(.,1) %>%
+  mutate(Published = substr(Published,1,10)) #%>%
+#mutate(Datum = as.Date(Published,"d%.m%.Y%"))
+
+Datum  <- mutate(xiaomiD, b2= as.Date(Published, format= "%d.%m.%Y")) %>%
+  select(-Published) %>%
+  rename(Datum =b2)
+
+
+xiaomi <- readxl::read_excel("../dta/Weekly/08_11_2021-15_11_2021.xlsx") %>% 
+  row_to_names(.,1) %>% 
+  clean_names() %>%
+#  select(-c(1,17:25,28:33,37:41)) %>%
+  select(-published,-indexed,-category,-image,-languages) %>%
+  cbind.data.frame(Datum)
+
+```
+
+```{r lexicon, echo=FALSE, message=FALSE, warning=FALSE}
+## M-Files ----
+
+# function to parse JSON from http conenctiion
+parseJSON <- function(x) {
+  xCon <- content(x, as = "text", type = "aplication/json", encoding = "UTF-8")
+  xCon <- jsonlite::fromJSON(xCon, flatten = TRUE)
+  xCon
+}
+
+# GET REST API function M-Files
+mfiles_get <- function(token, resource){
+  req <- GET(url = paste0('http://server.contentio.biz/REST', resource),
+             add_headers('X-Authentication' = token, 'content-type' = "application/json"))
+  result <- parseJSON(req)
+  return(result)
+}
+
+# GET token M-Files
+req <- POST(url = 'http://server.contentio.biz/REST/server/authenticationtokens.aspx', 
+            config = add_headers('content-type' = "application/json"),
+            body = list(Username = "msagovac", Password = "Wc8O10TaHz40",
+                        VaultGuid = "{7145BCEB-8FE2-4278-AD3B-7AE70374FF8A}",
+                        ComputerName  = "CT-VM-01"),
+            encode = "json", verbose())
+token <- parseJSON(req)[[1]]
+
+# M-FILES DOWNLOAD FILES
+mfiles_downlaod <- function(objType, objId, fileId) {
+  req <- GET(url = paste0('http://server.contentio.biz/REST/objects/', objType, '/', 
+                          objId, '/latest/files/',fileId , '/content'),
+             add_headers('X-Authentication' = token))
+  reqCon <- content(req, as = "text", encoding = "UTF-8")
+  if (is.na(reqCon)) {
+    reqCon <- content(req, as = "raw", encoding = "UTF-8")
+    reqCon <- rawToChar(reqCon, multiple = FALSE)
+    reqCon <- iconv(reqCon, "", "UTF-8")
+  }
+  reqCon
+}
+mfiles_downlaod_txt <- function(objType, objId, fileId, ext = ".csv") {
+  req <- GET(url = paste0('http://server.contentio.biz/REST/objects/', objType, '/', 
+                          objId, '/latest/files/',fileId , '/content'),
+             add_headers('X-Authentication' = token))
+  reqCon <- httr::content(req)
+  tempFileSave <- paste0(tempfile(), ext)
+  writeBin(reqCon, tempFileSave)
+  return(tempFileSave)
+}
+
+
+# GET classess, props and others
+prop <- mfiles_get(token, "/structure/properties")
+prop <- prop %>% 
+  select(DataType, ID, Name, ObjectType) %>% 
+  dplyr::arrange(Name)
+objs <- mfiles_get(token, "/structure/objecttypes")
+mfilesClass <- mfiles_get(token, "/structure/classes")
+
+CroSentilex_n <- read.delim(mfiles_downlaod_txt("0", 136679, 136711, ext = ".txt"),
+                            header = FALSE,
+                            sep = " ",
+                            stringsAsFactors = FALSE) %>% 
+  rename(word = "V1", sentiment = "V2" ) %>%
+  mutate(brija = "NEG")
+
+CroSentilex_p <- read.delim(mfiles_downlaod_txt("0", 136681, 136713, ext = ".txt"),
+                            header = FALSE,
+                            sep = " ",
+                            stringsAsFactors = FALSE) %>% 
+  rename(word = "V1", sentiment = "V2" ) %>%
+  mutate(brija = "POZ")
+Crosentilex_sve <- rbind(setDT(CroSentilex_n), setDT(CroSentilex_p))
+#head(Crosentilex_sve)
+
+CroSentilex_Gold  <- read.delim2(mfiles_downlaod_txt("0", 136680, 136712, ext = ".txt"),
+                                 header = FALSE,
+                                 sep = " ",
+                                 stringsAsFactors = FALSE) %>%
+  rename(word = "V1", sentiment = "V2" ) 
+
+CroSentilex_Gold[1,1] <- "dati"
+CroSentilex_Gold$sentiment <- str_replace(CroSentilex_Gold$sentiment , "-", "1")
+CroSentilex_Gold$sentiment <- str_replace(CroSentilex_Gold$sentiment , "\\+", "2")
+CroSentilex_Gold$sentiment <- as.numeric(unlist(CroSentilex_Gold$sentiment))
+#head(CroSentilex_Gold)
+
+# leksikoni
+stopwords_cro <- get_stopwords(language = "hr", source = "stopwords-iso")
+my_stop_words <- tibble(
+  word = c(
+    "jedan",
+    "e","prvi", "dva","dvije","drugi",
+    "tri","tre?i","pet","kod",
+    "ove","ova",  "ovo","bez",
+    "evo","oko",  "om", "ek",
+    "mil","tko","?est", "sedam",
+    "osam",   "?im", "zbog",
+    "prema", "dok","zato", "koji", 
+    "im", "?ak","me?u", "tek",
+    "koliko", "tko","kod","poput", 
+    "ba?", "dakle", "osim", "svih", 
+    "svoju", "odnosno", "gdje",
+    "kojoj", "ovi", "toga","ima","treba","sad","to","kad", "?e","ovaj","?ta","onda","ce","ko"
+  ),
+  lexicon = "lux"
+)
+stop_corpus <- my_stop_words %>%
+  bind_rows(stopwords_cro)
+
+```
+
+```{r tokenize, echo=FALSE, message=FALSE, warning=FALSE}
+
+xiaomi %>%
+  unnest_tokens(word, text) %>%
+  anti_join(stop_corpus, by = "word") %>%
+  mutate(word = gsub("\\d+", NA, word)) %>%
+  mutate(word = gsub("^[a-zA-Z]$", NA, word)) %>%
+  filter(!is.na(word)) -> rijeci_clean
+
+```
+
+
+# Contents
+
+<br>
+<br>
+
+1. [General Overview](#gen)
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+.footnote[[*] On demand avaliable reports for Facebook, Forums, Portals, Twitter, Youtube, Press and Instagram.]
+
+---
+class: inverse, center, middle
+name: gen
+
+# GENERAL OVERVIEW
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+(Trends in the Croatian social media space.)
+
+---
+
+# Frequency of mention
+<br>
+<br>
+<br>
+```{r freqOFmention, echo=FALSE, message=FALSE, warning=FALSE}
+
+
+rijeci_clean %>%
+  filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
+  group_by(word) %>%
+  count() %>%
+  arrange(desc(n))-> freqOFmention
+
+freqOFmention %>%
+  rename (Brand = word,
+          'Number of mentions' = n) %>%
+  kable() %>%
+    kable_styling()
+
+#freqOFmention %>%
+#  ggplot(.,aes(word, n)) + geom_bar(stat= "identity")
+  
+
+```
+ 
+ 
+<br>
+<br>
+.footnote[[*]Number of brand mentions in the whole text corpora.]
+---
+
+# Frequency of publication
+<br>
+<br>
+<br>
+```{r freqOFpublication, echo=FALSE, message=FALSE, warning=FALSE}
+
+rijeci_clean %>%
+  filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
+  group_by(word) %>%
+  summarise(n = n_distinct(id)) %>%
+  arrange(desc(n)) -> freqOFpublication
+
+
+freqOFpublication %>%
+  rename (Brand = word,
+          'Number of publications' = n) %>%
+  kable() %>%
+    kable_styling()
+
+```
+
+
+.footnote[[*]Number of distinct publications that mention the brand.]
+
+---
+
+# Most important words
+<br>
+```{r words, echo=FALSE, message=FALSE, warning=FALSE}
+
+rijeci_clean %>%
+  group_by(word) %>%
+  count() %>%
+  arrange(desc(n)) %>% 
+  ungroup() %>%
+  rename("Word" = word, "No. of occurences" = n)-> allWords
+
+
+allWords %>%
+  kable() %>%
+    kable_styling() %>%
+    scroll_box(width = "700px", height = "400px")
+```
+
+.footnote[[*]Words in the whole text corpora.]
+
+---
+
+# Most important words over time
+
+```{r brandOverTime, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 3, fig.width = 5}
+
+brands <- c("xiaomi", "samsung", "huawei", "vivo")
+
+rijeci_clean %>%
+#  mutate(Datum = lubridate::floor_date(Datum, "week")) %>% 
+  group_by(Datum) %>%
+  count(word) %>% 
+  mutate(gn = sum(n)) %>% 
+  filter(word %in% brands) %>%
+  ggplot(., aes(Datum, n / gn)) + 
+#  geom_bar(stat = "identity") +
+  geom_line() + 
+  ggtitle("Brand mentions over time") +
+  ylab("% in the corpus") +
+  xlab("Date") +
+  facet_wrap(~ word, scales = "free_y") +
+  scale_y_continuous(labels = scales::percent_format()) +
+  scale_x_date(labels = date_format("%d-%m")) +
+  theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(),
+  panel.background = element_blank(), axis.line = element_line(colour = "black"))
+
+
+```
+
+.footnote[[*]Percentage (%) of words (brands) in the full text corpora on a given day.]
+
+
+---
+
+# Media landscape frequency
+<br>
+
+```{r landscapeFreq, echo=FALSE, message=FALSE, warning=FALSE}
+
+xiaomi %>% 
+  group_by(source) %>%
+  summarise(n = n_distinct(id)) %>%
+  arrange(desc(n)) -> landscapeFreq
+  
+
+landscapeFreq %>%
+  rename (Source = source,
+          'Number of publications' = n) %>%
+  kable() %>%
+  kable_styling() %>%
+  scroll_box(width = "500px", height = "400px")
+
+```
+
+
+.footnote[[*]Uniqe publications that mention one or more brands per social media.]
+
+---
+
+# Media landscape frequency by brand
+<br>
+
+```{r landscapeFreqBrand, echo=FALSE, message=FALSE, warning=FALSE, fig.height = 5, fig.width=12}
+
+rijeci_clean %>%
+  filter(word %in% c("xiaomi","samsung","vivo","huawei")) %>%
+  group_by(source, word) %>%
+  summarise(n = n_distinct(id)) %>%
+  arrange(desc(n)) %>%
+  filter(n > 2) -> landscapeFreqBrand
+  
+
+
+landscapeFreqBrand %>%
+  ggplot(., aes(x = reorder(source,n), y = n)) +
+  geom_bar(stat = "identity", alpha = 1) +
+  facet_wrap(~word, scales = "free") +
+  ylab("Number of publications") +
+  xlab("Source") +
+  ggtitle("Media landscape by brand") +
+#  theme_bw() +
+#  theme(axis.text.x=element_text(angle=45,hjust=1)) 
+  theme(panel.grid.major = element_blank(),
+        panel.grid.minor = element_blank(),
+        panel.background = element_blank(),
+        axis.line = element_line(colour = "black"),
+        axis.text.x=element_text(angle=35,hjust=1))
+
+
+```
+
+
+.footnote[[*]Number of publications by the brand and social media.]
+
+
+---
+
+# CONTACT
+<br>
+<br>
+<br>
+<br>
+**LUKOS**, obrt za informacijske djelatnosti
+<br>
+Novska, Vinogradska ulica 3G
+<br>
+doc.dr.sc.Luka Šikić
+<br><br>
+Kontakt:
+<br>
+mob: 098/162-30-52
+<br>
+email:lukos.usluge@gmail.com
+<br>
+
+
+
+
+
+
