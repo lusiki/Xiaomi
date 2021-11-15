@@ -1,0 +1,27 @@
+name: "ShareOfVoice" 
+navbar:
+  title: "SoV:Xiaomi"
+  left:
+    - text: "General"
+      href: index.html
+    - text: "July/21"
+      href: July.html
+    - text: "August/21"
+      href: August.html
+    - text: "September/21"
+      href: September.html
+    - text: "October/21"
+      href: October.html
+    - text: "Weekly Reports"
+      href: wre.html  
+
+  right:
+    - text: "About"
+      href: site-info.html
+    - icon: ion-social-github
+      href: https://github.com/lusiki/Xiaomi
+output_dir: "docs"
+output:
+  html_document:
+    theme: flatly
+    highlight: textmate
