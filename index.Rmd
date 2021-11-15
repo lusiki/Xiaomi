@@ -8,7 +8,7 @@ pagetitle: "General"
 <br>
 
 <p align="center">
-  <img src="Dta/foto.jpg" width="550" title="hover text">
+  <img src="Dta/foto.jpg" width="850" title="hover text">
 </p>
 
 
@@ -21,20 +21,26 @@ pagetitle: "General"
 <br>
 <br>
 
-Welcome to the **Share of Voice Report** for brands Xiaomi, Samsung, Vivo and Huawei in the Croatian media space. The report fully covers the following social media spaces: Press, Facebook, Forums, Instagram, YouTube, Portals and Twitter.  
+This the **Share of Voice Report (SoV)** for brands *Xiaomi, Samsung, Vivo* and *Huawei* in the Croatian media space. The report covers the following social media spaces: Press, Facebook, Forums, Instagram, YouTube, Portals and Twitter.  
 
 
 <br>
 <br>
 <br>
 <br>
+<br>
+<br>
+<br>
+<br>
 
-### This Report is maintained by:
+### This report is maintained by:
 
 **Lukos, Obrt za informacijske djelatnosti**
 <br>
 [Luka Šikić](https://www.lukasikic.info/), PhD
-mail: lukos.usluge@gmail.com</br>
+<br>
+mail: lukos.usluge@gmail.com
+<br>
 mob:  + 385 98 162 30 52</br>
 
 

@@ -1,6 +1,6 @@
 name: "ShareOfVoice" 
 navbar:
-  title: "SoV:Xiaomi"
+  title: "SoV"
   left:
     - text: "General"
       href: index.html
