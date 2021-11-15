@@ -1,0 +1,10 @@
+---
+title: "About"
+---
+
+This page is created with [R Markdown](http://rmarkdown.rstudio.com/) and [RStudio](http://rstudio.com).
+
+```{r, child="_sessioninfo.Rmd"}
+```
+
+

@@ -1,0 +1,309 @@
+---
+title: "SHARE OF VOICE REPORT"
+author: "Croatian social media overview for August, 2021"
+date: "Contentio d.o.o"
+# subtitle: "<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>"
+subtitle: "Xiaomi"
+output:
+  xaringan::moon_reader:
+    css: [default, metropolis, metropolis-fonts] 
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+---
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+library(knitr)
+opts_chunk$set(
+  fig.align="center", #fig.width=6, fig.height=4.5, 
+  # out.width="748px", #out.length="520.75px",
+  dpi=400, #fig.path='Figs/',
+  cache=F#, echo=F, warning=F, message=F
+  )
+
+
+# Define pink color
+red_pink <- "#e64173"
+turquoise <- "#20B2AA"
+orange <- "#FFA500"
+red <- "#fb6107"
+blue <- "#2b59c3"
+green <- "#8bb174"
+grey_light <- "grey70"
+grey_mid <- "grey50"
+grey_dark <- "grey20"
+purple <- "#6A5ACD"
+slate <- "#314f4f"
+# Dark slate grey: #314f4f
+# Knitr options
+
+```
+
+```{css, echo = F, eval = T}
+@media print {
+  .has-continuation {
+    display: block !important;
+  }
+}
+remark-slide-content {
+  font-size: 22px;
+  padding: 20px 80px 20px 80px;
+}
+.remark-code, .remark-inline-code {
+  background: #f0f0f0;
+}
+.remark-code {
+  font-size: 16px;
+}
+.mid. remark-code { /*Change made here*/
+  font-size: 60% !important;
+}
+.tiny .remark-code { /*Change made here*/
+  font-size: 40% !important;
+}
+```
+
+```{r library, warning=F, echo=F, message=F, eval=TRUE}
+
+
+library(tidyverse)  # data manipulation and visualization
+library(gridExtra)  # plot arrangement
+library(patchwork)
+library(ggplot2)
+library(tidyverse)
+library(dplyr)
+library(tidyr)
+library(janitor)
+library(httr)
+library(tidytext)
+library(kableExtra)
+library(data.table)
+library(scales)
+library(readxl)
+
+
+```
+
+
+1. [Twitter](#tw)
+
+
+
+---
+
+class: inverse, center, middle
+name: tw
+
+# TWITTER
+
+<html><div style='float:left'></div><hr color='#EB811B' size=1px width=796px></html>
+
+(Informed but small comunity in Croatia.)
+
+---
+
+```{r importTwitter, echo=FALSE, message=FALSE, warning=FALSE}
+
+rm(list=ls())
+
+site_data_columns <- read_excel("../dta/08-21.xlsx",
+                               sheet = "Twitter")
+
+site_data_column_names <- colnames(site_data_columns)
+column_data_types <- c()
+for(i in 1 : length(site_data_column_names)){  
+
+    #where date is a column name
+    if(site_data_column_names[i] == "date"){
+         column_data_types[i] <- "date"
+
+         #where result is a column name
+         } else if (site_data_column_names[i] == "result") {
+                      column_data_types[i] <- "numeric"
+
+         } else{
+                column_data_types[i] <- "text"
+        }
+}
+column_data_types[5] <- "date"
+column_data_types[10] <- "guess"
+
+
+
+twitter <- readxl::read_excel("../dta/08-21.xlsx",
+                               sheet = "Twitter",
+                               col_types = column_data_types) %>% 
+  row_to_names(.,1) %>% 
+  clean_names() %>%
+  select(title,text,"Date" = na,source,url, type, impressions, engagements, author, audience, profile) %>%
+  mutate(impressions = as.numeric(impressions)) %>%
+  mutate(engagements = as.numeric(engagements)) %>%
+  mutate(audience = as.numeric(audience))
+
+
+```
+
+
+# Summary of activity
+<br>
+<br>
+
+
+```{r , echo=FALSE, message=FALSE, warning=FALSE}
+
+twitter %>% 
+  group_by(type) %>%
+  count() %>%
+  arrange(desc(n)) %>% 
+  rename("Type of activity" = type, 
+         "No. of occurences" = n) %>%
+  kable() %>%
+    kable_styling() #%>%
+#     scroll_box(width = "700px", height = "400px")
+
+```
+
+---
+
+# Most important authors
+<br>
+<br>
+
+```{r , echo=FALSE, message=FALSE, warning=FALSE}
+
+
+twitter %>%
+  group_by(author) %>%
+  count() %>%
+  arrange(desc(n)) %>%
+  filter(n > 2) %>% 
+  rename("Author" = author, 
+         "No. of publications" = n) %>%
+  kable() %>%
+    kable_styling() %>%
+     scroll_box(width = "750px", height = "400px")
+
+
+```
+
+
+---
+
+# Most important tweets (impressions)
+<br>
+<br>
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+twitter %>%
+  group_by(text, author, url) %>%
+  summarise(Impressions = sum(impressions, na.rm = TRUE)) %>%
+  arrange(desc(Impressions)) %>%
+  filter(Impressions > 300) %>% 
+  select(text, Impressions, author) %>%
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
+    kable_styling() %>%
+     scroll_box(width = "750px", height = "400px")
+
+
+
+```
+
+
+---
+
+# Most influential profiles (audience size)
+<br>
+<br>
+
+
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+
+twitter %>%
+  group_by(author) %>%
+  arrange(desc(audience)) %>%
+  filter(audience > 1000) %>%
+  select(author,audience,profile) %>% 
+  distinct(author, .keep_all = TRUE) %>% 
+  kable(format.args = list(decimal.mark = ',', big.mark = ".")) %>%
+    kable_styling() %>%
+     scroll_box(width = "750px", height = "400px")
+
+```
+
+
+
+
+
+
+---
+
+# CONTACT
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
