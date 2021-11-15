@@ -12,17 +12,24 @@ title: " "
 
 
 [General overview](https://raw.githack.com/lusiki/Xiaomi/main/7July/General.html)
-
+<br>
+<br>
 [Facebook](https://raw.githack.com/lusiki/Xiaomi/main/7July/Facebook.html)
-
+<br>
+<br>
 [Forums](https://raw.githack.com/lusiki/Xiaomi/main/7July/Portals.html)
-
+<br>
+<br>
 [Portals](https://github.com/lusiki/Xiaomi/blob/main/7July/Portals.html)
-
+<br>
+<br>
 [Twitter](https://raw.githack.com/lusiki/Xiaomi/main/7July/Twitter.html)
-
+<br>
+<br>
 [YouTube](https://raw.githack.com/lusiki/Xiaomi/main/7July/YouTube.html)
-
+<br>
+<br>
 [Press](https://raw.githack.com/lusiki/Xiaomi/main/7July/Press.html)
-
+<br>
+<br>
 [Instagram](https://raw.githack.com/lusiki/Xiaomi/main/7July/Instagram.html)

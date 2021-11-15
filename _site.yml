@@ -4,16 +4,18 @@ navbar:
   left:
     - text: "General"
       href: index.html
-    - text: "July/21"
-      href: July.html
-    - text: "August/21"
-      href: August.html
-    - text: "September/21"
-      href: September.html
-    - text: "October/21"
-      href: October.html
     - text: "Weekly Reports"
-      href: wre.html  
+      href: wre.html 
+    - text: "October"
+      href: October.html   
+    - text: "September"
+      href: September.html   
+    - text: "August"
+      href: August.html      
+    - text: "July"
+      href: July.html
+    - text: "Special Reports"
+      href: sre.html 
 
   right:
     - text: "About"
